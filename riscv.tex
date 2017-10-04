@@ -4,10 +4,12 @@
 \usepackage[margin=0.75in]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[shortlabels]{enumitem}
 \usepackage{titling}
+\usepackage{multirow}
 
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\instbit}[1]{\mbox{\scriptsize #1}}
+\newcommand{\instbitrange}[2]{~\instbit{#1} \hfill \instbit{#2}~}
 
 \begin{document}
 
@@ -22,6 +24,76 @@
 \maketitle
 
 \section*{RISC-V Instruction Set}
+
+\subsection*{Core Instruction Formats}
+\begin{center}
+\begin{tabular}
+{p{0in}p{0.4in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.4in}p{0.6in}p{0.4in}p{0.6in}p{0.7in}l}
+&
+\multicolumn{1}{l}{\instbit{31}} &
+\multicolumn{1}{r}{\instbit{27}} &
+\instbit{26} &
+\instbit{25} &
+\multicolumn{1}{l}{\instbit{24}} &
+\multicolumn{1}{r}{\instbit{20}} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\cline{2-11}
+
+&
+\multicolumn{4}{|c|}{funct7} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & R-type \\
+\cline{2-11}
+
+&
+\multicolumn{6}{|c|}{imm[11:0]} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & I-type \\
+\cline{2-11}
+
+&
+\multicolumn{4}{|c|}{imm[11:5]} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{imm[4:0]} &
+\multicolumn{1}{c|}{opcode} & S-type \\
+\cline{2-11}
+
+&
+\multicolumn{4}{|c|}{imm[12$\vert$10:5]} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{imm[4:1$\vert$11]} &
+\multicolumn{1}{c|}{opcode} & B-type \\
+\cline{2-11}
+
+&
+\multicolumn{8}{|c|}{imm[31:12]} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & U-type \\
+\cline{2-11}
+
+&
+\multicolumn{8}{|c|}{imm[20$\vert$10:1$\vert$11$\vert$19:12]} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & J-type \\
+\cline{2-11}
+\end{tabular}
+\end{center}
+
+\subsection*{Arithmetic Core Instruction Set}
+
+\subsubsection*{RV64I Base Integer Instructions}
 
 \begin{tabular}
 {l | l | c | c | c | c | l | l}
@@ -69,10 +141,6 @@ Mnemonic    & Name                  & FMT & Opcode        & F3  & F7    & Descri
 
 \end{tabular}
 
-\subsubsection*{RV64I Base Integer Instructions}
-
-\subsection*{Arithmetic Core Instruction Set}
-
 \subsubsection*{RV64M Multiply Extension}
 \begin{tabular}
 {l | c | c | c | l | l | r}
@@ -84,8 +152,6 @@ Mnemonic    & FMT   & Opcode         & Funct3 & Funct7  & Description   & Note \
 \subsubsection*{RV64F / D Floating-Point Extensions}
 
 \subsubsection*{RV64A Atomic Extension}
-
-\section*{Core Instruction Formats}
 
 \section*{Pseudo Instructions}
 

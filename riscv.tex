@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[margin=0.75in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{titling}
+
+\newcommand{\code}[1]{\texttt{#1}}
+
+\begin{document}
+
+%% Title %%
+\pretitle{\vspace{-0.75in}\begin{center}\LARGE \textbf }
+\title{RISC-V Reference Card}
+\posttitle{\par\end{center}}
+\author{James Zhu}
+\predate{}
+\date{}
+\postdate{}
+\maketitle
+
+\section*{RISC-V Instruction Set}
+
+\begin{tabular}
+{l | l | c | c | c | c | l | l}
+Mnemonic    & Name                  & FMT & Opcode        & F3  & F7    & Description (C syntax)  & Note \\ \hline
+\code{add}  & ADD                   & R  & \code{0000011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] + r[rs2]} \\
+\code{sub}  & SUB                   & R  & \code{0000011} & 0x0 & 0x20  & \code{R[rd] = R[rs1] - r[rs2]} \\
+\code{xor}  & XOR                   & R  & \code{0000011} & 0x4 & 0x00  & \code{R[rd] = R[rs1] \^{} r[rs2]} \\
+\code{or}   & OR                    & R  & \code{0000011} & 0x6 & 0x00  & \code{R[rd] = R[rs1] | r[rs2]} \\
+\code{and}  & AND                   & R  & \code{0000011} & 0x7 & 0x00  & \code{R[rd] = R[rs1] \& r[rs2]} \\ \hline
+
+\code{addi} & ADD Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] + imm} \\
+\code{subi} & SUB Immediate         & I  & \code{0010011} & 0x0 & 0x20  & \code{R[rd] = R[rs1] - imm} \\
+\code{xori} & XOR Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] \^{} imm} \\
+\code{ori}  & OR Immediate          & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] | imm} \\
+\code{andi} & AND Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] \& imm} \\ \hline
+
+\code{sll}  & Shift Left Logical    & R  & \code{0000011} & 0x1 & 0x00  & \code{R[rd] = R[rs1] | r[rs2]} \\
+\code{srl}  & Shift Right Logical   & R  & \code{0000011} & 0x2 & 0x00  & \code{R[rd] = R[rs1] | r[rs2]} \\
+\code{sra}  & Shift Right Arith     & R  & \code{0000011} & 0x3 & 0x20  & \code{R[rd] = R[rs1] | r[rs2]} \\ \hline
+
+\code{slli} & Shift Left Logical Imm &I  & \code{0010011} & 0x1 & 0x00  &\\
+\code{srli} & Shift Right Logical Imm&I  & \code{0010011} & 0x1 & 0x00  &\\
+\code{srai} & Shift Right Arith Imm & I  & \code{0010011} & 0x3 & 0x20  &\\ \hline
+
+\code{lb}  & Load Byte              & I  & \code{0000011} & 0x0 &       & \code{R[rd] = *R[rs1][0:7]} \\ \hline
+\code{lh}  & Load Half              & I  & \code{0000011} & 0x1 &       & \code{R[rd] = *R[rs1][0:15]} \\ \hline
+\code{lw}  & Load Word              & I  & \code{0000011} & 0x2 &       & \code{R[rd] = *R[rs1][0:31]} \\ \hline
+
+\code{addi} & ADD Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] + imm} \\
+\code{subi} & SUB Immediate         & I  & \code{0010011} & 0x0 & 0x20  & \code{R[rd] = R[rs1] - imm} \\
+\code{xori} & XOR Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] \^{} imm} \\
+\code{ori}  & OR Immediate          & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] | imm} \\
+\code{andi} & AND Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] \& imm} \\ \hline
+ 
+\code{beq}  & Branch ==             & B  & \code{1100011} & 0x0 &       & \code{if(R[rs1] == R[rs2]) PC += imm} \\
+\code{bne}  & Branch !=             & B  & \code{1100011} & 0x1 &       & \code{if(R[rs1] != R[rs2]) PC += imm} \\
+\code{blt}  & Branch <              & B  & \code{1100011} & 0x4 &       & \code{if(R[rs1] < \enspace R[rs2]) PC += imm} \\
+\code{bge}  & Branch $\leq$         & B  & \code{1100011} & 0x5 &       & \code{if(R[rs1] >= R[rs2]) PC += imm} \\
+\code{bltu} & Branch < (Unsigned)   & B  & \code{1100011} & 0x6 &       & \code{if(R[rs1] < \enspace R[rs2]) PC += imm} \\
+\code{bgeu} & Branch $\geq$ (Unsigned) & B  & \code{1100011} & 0x7  &       & \code{if(R[rs1] >= R[rs2]) PC += imm} \\ \hline
+
+\code{jal}  & Jump And Link         & UJ & \code{1101111} &     &       & \code{R[rd] = PC+4; PC += imm} \\ \hline
+
+\code{jalr} & Jump And Link Reg     & I  & \code{1100111} & 0x0 &       & \code{R[rd] = PC+4; PC = R[rs1]} \\ \hline
+
+\end{tabular}
+
+\subsubsection*{RV64I Base Integer Instructions}
+
+\subsection*{Arithmetic Core Instruction Set}
+
+\subsubsection*{RV64M Multiply Extension}
+\begin{tabular}
+{l | c | c | c | l | l | r}
+Mnemonic    & FMT   & Opcode         & Funct3 & Funct7  & Description   & Note \\ \hline
+\code{mul}  & R     & \code{0000011} & 0x0    & 0x01 &\code{R[rd] = R[rs1] * r[rs2]} \\
+\code{div}  & R     & \code{0000011} & 0x0    & 0x01 &\code{R[rd] = R[rs1] * r[rs2]} \\
+\end{tabular}
+
+\subsubsection*{RV64F / D Floating-Point Extensions}
+
+\subsubsection*{RV64A Atomic Extension}
+
+\section*{Core Instruction Formats}
+
+\section*{Pseudo Instructions}
+
+\section*{Opcodes}
+
+\section*{Registers}
+
+\section*{IEEE 754 Floating-Point}
+
+\subsection*{IEEE Half, Single, Double, and Quad-Precision Formats}
+
+\section*{Memory Allocation}
+
+\section*{Size Prefixes}
+
+\end{document}

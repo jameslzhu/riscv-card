@@ -96,8 +96,8 @@
 \subsubsection*{RV64I Base Integer Instructions}
 
 \begin{tabular}
-{l | l | c | c | c | c | l | l}
-Mnemonic    & Name                  & FMT & Opcode        & F3  & F7    & Description (C syntax)  & Note \\ \hline
+{l | l | c | c | c | c | l }
+Mnemonic    & Name                  & FMT & Opcode        & F3  & F7    & Description (C syntax)  \\ \hline
 \code{add}  & ADD                   & R  & \code{0000011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] + r[rs2]} \\
 \code{sub}  & SUB                   & R  & \code{0000011} & 0x0 & 0x20  & \code{R[rd] = R[rs1] - r[rs2]} \\
 \code{xor}  & XOR                   & R  & \code{0000011} & 0x4 & 0x00  & \code{R[rd] = R[rs1] \^{} r[rs2]} \\
@@ -118,8 +118,8 @@ Mnemonic    & Name                  & FMT & Opcode        & F3  & F7    & Descri
 \code{srli} & Shift Right Logical Imm&I  & \code{0010011} & 0x1 & 0x00  &\\
 \code{srai} & Shift Right Arith Imm & I  & \code{0010011} & 0x3 & 0x20  &\\ \hline
 
-\code{lb}  & Load Byte              & I  & \code{0000011} & 0x0 &       & \code{R[rd] = *R[rs1][0:7]} \\ \hline
-\code{lh}  & Load Half              & I  & \code{0000011} & 0x1 &       & \code{R[rd] = *R[rs1][0:15]} \\ \hline
+\code{lb}  & Load Byte              & I  & \code{0000011} & 0x0 &       & \code{R[rd] = *R[rs1][0:7]} \\
+\code{lh}  & Load Half              & I  & \code{0000011} & 0x1 &       & \code{R[rd] = *R[rs1][0:15]} \\
 \code{lw}  & Load Word              & I  & \code{0000011} & 0x2 &       & \code{R[rd] = *R[rs1][0:31]} \\ \hline
 
 \code{addi} & ADD Immediate         & I  & \code{0010011} & 0x0 & 0x00  & \code{R[rd] = R[rs1] + imm} \\

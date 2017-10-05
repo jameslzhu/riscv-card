@@ -1,1 +1,17 @@
 \section*{Registers}
+
+\begin{tabular} {c | c | l | l}
+Register       & Name     & Use                   & Saver  \\ \hline
+\code{x0}      & \code{zero} & Zero constant         & N/A    \\
+\code{x1}      & \code{ra}       & Return address        & Caller \\
+\code{x2}      & \code{sp}       & Stack pointer         & -      \\
+\code{x3}      & \code{gp}       & Global pointer        & -      \\
+\code{x4}      & \code{tp}       & Thread pointer        & Callee \\
+\code{x5}      & \code{t0-t2}    & Temporaries           & Caller \\
+\code{x8}      & \code{s0 / fp}  & Saved / frame pointer & Callee \\
+\code{x9}      & \code{s1}       & Saved register        & Callee \\
+\code{x10-x11} & \code{a0-a1}    & Fn args / return      & Caller \\
+\code{x12-x17} & \code{a2-a7}    & Fn args               & Caller \\
+\code{x18-x27} & \code{s2-s11}   & Saved registers       & Callee \\
+\code{x28-x31} & \code{t3-t6}    & Temporaries           & Caller \\
+\end{tabular}

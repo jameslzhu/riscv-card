@@ -72,7 +72,7 @@
 \subsubsection*{RV32I Base Integer Instructions}
 
 \begin{tabular}
-{l | l | c | c | c | c | l | l}
+{l | l | c | c | c | c | l | l} \hline
 Inst.       & Name                    & FMT & Optt        & F3  & F7    & Description (C syntax)          & Note     \\ \hline
 \tt{add}  & ADD                     & R  & \tt{0000011} & 0x0 & 0x00  & \tt{rd = rs1 + rs2}           & \\
 \tt{sub}  & SUB                     & R  & \tt{0000011} & 0x0 & 0x20  & \tt{rd = rs1 - rs2}           & \\
@@ -81,18 +81,18 @@ Inst.       & Name                    & FMT & Optt        & F3  & F7    & Descri
 \tt{and}  & AND                     & R  & \tt{0000011} & 0x7 & 0x00  & \tt{rd = rs1 \& rs2}          & \\
 \tt{sll}  & Shift Left Logical      & R  & \tt{0000011} & 0x1 & 0x00  & \tt{rd = rs1 << rs2}          & \\
 \tt{srl}  & Shift Right Logical     & R  & \tt{0000011} & 0x2 & 0x00  & \tt{rd = rs1 >> rs2}          & \\
-\tt{sra}  & Shift Right Arith*      & R  & \tt{0000011} & 0x3 & 0x20  & \tt{rd = rs1 >> rs2}          & \\ \hline
-\tt{slt}  & Set Less Than           & R  & \tt{0110011} & 0x2 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & \\
-\tt{sltu} & Set Less Than (U)       & R  & \tt{0110011} & 0x3 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & zero-extends \\
+\tt{sra}  & Shift Right Arith*      & R  & \tt{0000011} & 0x3 & 0x20  & \tt{rd = rs1 >> rs2}          & \\
+\tt{slt}  & Set Less Than           & R  & \tt{0110011} & 0x2 &       & \tt{rd = (rs1 < rs2) \? 1 : 0} & \\
+\tt{sltu} & Set Less Than (U)       & R  & \tt{0110011} & 0x3 &       & \tt{rd = (rs1 < rs2) \? 1 : 0} & zero-extends \\ \hline
 \tt{addi} & ADD Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 + imm}           & \\
 \tt{xori} & XOR Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 \^{} imm}        & \\
 \tt{ori}  & OR Immediate            & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 | imm}           & \\
 \tt{andi} & AND Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 \& imm}          & \\
 \tt{slli} & Shift Left Logical Imm  & I  & \tt{0010011} & 0x1 & 0x00  & \tt{rd = rs1 << imm}          & \\
 \tt{srli} & Shift Right Logical Imm & I  & \tt{0010011} & 0x1 & 0x00  & \tt{rd = rs1 >> imm}          & \\
-\tt{srai} & Shift Right Arith Imm   & I  & \tt{0010011} & 0x3 & 0x20  & \tt{rd = rs1 >> imm}          & msb-extends \\ \hline
+\tt{srai} & Shift Right Arith Imm   & I  & \tt{0010011} & 0x3 & 0x20  & \tt{rd = rs1 >> imm}          & msb-extends \\
 \tt{slt}  & Set Less Than Imm       & I  & \tt{0010011} & 0x2 &       & \tt{rd = (rs1 < imm) ? 1 : 0} & \\
-\tt{sltu} & Set Less Than Imm (U)   & I  & \tt{0010011} & 0x3 &       & \tt{rd = (rs1 < imm) ? 1 : 0} & zero-extends \\
+\tt{sltu} & Set Less Than Imm (U)   & I  & \tt{0010011} & 0x3 &       & \tt{rd = (rs1 < imm) ? 1 : 0} & zero-extends \\ \hline
 \tt{lb}   & Load Byte               & I  & \tt{0000011} & 0x0 &       & \tt{rd = *rs1[0:7]}           & \\
 \tt{lh}   & Load Half               & I  & \tt{0000011} & 0x1 &       & \tt{rd = *rs1[0:15]}          & \\
 \tt{lw}   & Load Word               & I  & \tt{0000011} & 0x2 &       & \tt{rd = *rs1[0:31]}          & \\
@@ -103,9 +103,9 @@ Inst.       & Name                    & FMT & Optt        & F3  & F7    & Descri
 \tt{sw}   & Store Word              & S  & \tt{0100011} & 0x2 &       & \tt{*rs1[0:31] = rs2[0:31]}   & \\ \hline
 \tt{beq}  & Branch ==               & B  & \tt{1100011} & 0x0 &       & \tt{if(rs1 == rs2) PC += imm} & \\
 \tt{bne}  & Branch !=               & B  & \tt{1100011} & 0x1 &       & \tt{if(rs1 != rs2) PC += imm} & \\
-\tt{blt}  & Branch <                & B  & \tt{1100011} & 0x4 &       & \tt{if(rs1 <\enspace rs2) PC += imm} & \\
+\tt{blt}  & Branch <                & B  & \tt{1100011} & 0x4 &       & \tt{if(rs1 < \enspace rs2) PC += imm} & \\
 \tt{bge}  & Branch $\leq$           & B  & \tt{1100011} & 0x5 &       & \tt{if(rs1 >= rs2) PC += imm} & \\
-\tt{bltu} & Branch < (U)            & B  & \tt{1100011} & 0x6 &       & \tt{if(rs1 <\enspace rs2) PC += imm} & zero-extends \\
+\tt{bltu} & Branch < (U)            & B  & \tt{1100011} & 0x6 &       & \tt{if(rs1 < \enspace rs2) PC += imm} & zero-extends \\
 \tt{bgeu} & Branch $\geq$ (U)       & B  & \tt{1100011} & 0x7 &       & \tt{if(rs1 >= rs2) PC += imm} & zero-extends \\ \hline
 \tt{jal}  & Jump And Link           & UJ & \tt{1101111} &     &       & \tt{rd = PC+4; PC += imm}     & \\
 \tt{jalr} & Jump And Link Reg       & I  & \tt{1100111} & 0x0 &       & \tt{rd = PC+4; PC = rs1}      & \\ \hline

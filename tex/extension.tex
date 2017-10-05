@@ -2,16 +2,17 @@
 
 \subsubsection*{RV32M Multiply Extension}
 \begin{tabular}
-{l | l | c | c | c | l | l | l }
-Inst.       & Name              & FMT   & Optt         & F3  & F7  & Description                     & Note\\ \hline
-\tt{mul}  & MUL               & R     & \tt{0110011} & 0x0 & 0x1 & \tt{rd = (rs1 * rs2)[31:0]}   & \\
-\tt{mulh} & MUL High          & R     & \tt{0110011} & 0x1 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
-\tt{mulsu}& MUL High (S) (U)  & R     & \tt{0110011} & 0x2 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
-\tt{mulu} & MUL High (U)      & R     & \tt{0110011} & 0x3 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
-\tt{div}  & DIV               & R     & \tt{0110011} & 0x4 & 0x1 & \tt{rd = rs1 / rs2}           & \\
-\tt{divu} & DIV (U)           & R     & \tt{0110011} & 0x5 & 0x1 & \tt{rd = rs1 / rs2}           & \\
-\tt{rem}  & Remainder         & R     & \tt{0110011} & 0x6 & 0x1 & \tt{rd = rs1 \% rs2}          & \\
-\tt{remu} & Remainder (U)     & R     & \tt{0110011} & 0x7 & 0x1 & \tt{rd = rs1 \% rs2}          & \\
+{l | l | c | c | c | l | l } \hline
+Inst.       & Name              & FMT   & Optt         & F3  & F7  & Description                \\ \hline
+\tt{mul}  & MUL               & R     & \tt{0110011} & 0x0 & 0x1 & \tt{rd = (rs1 * rs2)[31:0]}  \\
+\tt{mulh} & MUL High          & R     & \tt{0110011} & 0x1 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
+\tt{mulsu}& MUL High (S) (U)  & R     & \tt{0110011} & 0x2 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
+\tt{mulu} & MUL High (U)      & R     & \tt{0110011} & 0x3 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
+\tt{div}  & DIV               & R     & \tt{0110011} & 0x4 & 0x1 & \tt{rd = rs1 / rs2}          \\
+\tt{divu} & DIV (U)           & R     & \tt{0110011} & 0x5 & 0x1 & \tt{rd = rs1 / rs2}          \\
+\tt{rem}  & Remainder         & R     & \tt{0110011} & 0x6 & 0x1 & \tt{rd = rs1 \% rs2}         \\
+\tt{remu} & Remainder (U)     & R     & \tt{0110011} & 0x7 & 0x1 & \tt{rd = rs1 \% rs2}         \\
+\hline
 \end{tabular}
 
 \subsubsection*{RV32F / D Floating-Point Extensions}

@@ -3,15 +3,15 @@
 \subsubsection*{RV32M Multiply Extension}
 \begin{tabular}
 {l | l | c | c | c | l | l | l }
-Inst.       & Name              & FMT   & Opcode         & F3  & F7  & Description                     & Note\\ \hline
-\code{mul}  & MUL               & R     & \code{0110011} & 0x0 & 0x1 & \code{rd = (rs1 * rs2)[31:0]}   & \\
-\code{mulh} & MUL High          & R     & \code{0110011} & 0x1 & 0x1 & \code{rd = (rs1 * rs2)[63:32]}  & \\
-\code{mulsu}& MUL High (S) (U)  & R     & \code{0110011} & 0x2 & 0x1 & \code{rd = (rs1 * rs2)[63:32]}  & \\
-\code{mulu} & MUL High (U)      & R     & \code{0110011} & 0x3 & 0x1 & \code{rd = (rs1 * rs2)[63:32]}  & \\
-\code{div}  & DIV               & R     & \code{0110011} & 0x4 & 0x1 & \code{rd = rs1 / rs2}           & \\
-\code{divu} & DIV (U)           & R     & \code{0110011} & 0x5 & 0x1 & \code{rd = rs1 / rs2}           & \\
-\code{rem}  & Remainder         & R     & \code{0110011} & 0x6 & 0x1 & \code{rd = rs1 \% rs2}          & \\
-\code{remu} & Remainder (U)     & R     & \code{0110011} & 0x7 & 0x1 & \code{rd = rs1 \% rs2}          & \\
+Inst.       & Name              & FMT   & Optt         & F3  & F7  & Description                     & Note\\ \hline
+\tt{mul}  & MUL               & R     & \tt{0110011} & 0x0 & 0x1 & \tt{rd = (rs1 * rs2)[31:0]}   & \\
+\tt{mulh} & MUL High          & R     & \tt{0110011} & 0x1 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
+\tt{mulsu}& MUL High (S) (U)  & R     & \tt{0110011} & 0x2 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
+\tt{mulu} & MUL High (U)      & R     & \tt{0110011} & 0x3 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]}  & \\
+\tt{div}  & DIV               & R     & \tt{0110011} & 0x4 & 0x1 & \tt{rd = rs1 / rs2}           & \\
+\tt{divu} & DIV (U)           & R     & \tt{0110011} & 0x5 & 0x1 & \tt{rd = rs1 / rs2}           & \\
+\tt{rem}  & Remainder         & R     & \tt{0110011} & 0x6 & 0x1 & \tt{rd = rs1 \% rs2}          & \\
+\tt{remu} & Remainder (U)     & R     & \tt{0110011} & 0x7 & 0x1 & \tt{rd = rs1 \% rs2}          & \\
 \end{tabular}
 
 \subsubsection*{RV32F / D Floating-Point Extensions}

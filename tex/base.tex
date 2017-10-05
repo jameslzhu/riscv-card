@@ -73,45 +73,45 @@
 
 \begin{tabular}
 {l | l | c | c | c | c | l | l}
-Inst.       & Name                    & FMT & Opcode        & F3  & F7    & Description (C syntax)          & Note     \\ \hline
-\code{add}  & ADD                     & R  & \code{0000011} & 0x0 & 0x00  & \code{rd = rs1 + rs2}           & \\
-\code{sub}  & SUB                     & R  & \code{0000011} & 0x0 & 0x20  & \code{rd = rs1 - rs2}           & \\
-\code{xor}  & XOR                     & R  & \code{0000011} & 0x4 & 0x00  & \code{rd = rs1 \^{} rs2}        & \\
-\code{or}   & OR                      & R  & \code{0000011} & 0x6 & 0x00  & \code{rd = rs1 | rs2}           & \\
-\code{and}  & AND                     & R  & \code{0000011} & 0x7 & 0x00  & \code{rd = rs1 \& rs2}          & \\
-\code{sll}  & Shift Left Logical      & R  & \code{0000011} & 0x1 & 0x00  & \code{rd = rs1 << rs2}          & \\
-\code{srl}  & Shift Right Logical     & R  & \code{0000011} & 0x2 & 0x00  & \code{rd = rs1 >> rs2}          & \\
-\code{sra}  & Shift Right Arith*      & R  & \code{0000011} & 0x3 & 0x20  & \code{rd = rs1 >> rs2}          & \\ \hline
-\code{slt}  & Set Less Than           & R  & \code{0110011} & 0x2 &       & \code{rd = (rs1 < rs2) ? 1 : 0} & \\
-\code{sltu} & Set Less Than (U)       & R  & \code{0110011} & 0x3 &       & \code{rd = (rs1 < rs2) ? 1 : 0} & zero-extends \\
-\code{addi} & ADD Immediate           & I  & \code{0010011} & 0x0 & 0x00  & \code{rd = rs1 + imm}           & \\
-\code{xori} & XOR Immediate           & I  & \code{0010011} & 0x0 & 0x00  & \code{rd = rs1 \^{} imm}        & \\
-\code{ori}  & OR Immediate            & I  & \code{0010011} & 0x0 & 0x00  & \code{rd = rs1 | imm}           & \\
-\code{andi} & AND Immediate           & I  & \code{0010011} & 0x0 & 0x00  & \code{rd = rs1 \& imm}          & \\
-\code{slli} & Shift Left Logical Imm  & I  & \code{0010011} & 0x1 & 0x00  & \code{rd = rs1 << imm}          & \\
-\code{srli} & Shift Right Logical Imm & I  & \code{0010011} & 0x1 & 0x00  & \code{rd = rs1 >> imm}          & \\
-\code{srai} & Shift Right Arith Imm   & I  & \code{0010011} & 0x3 & 0x20  & \code{rd = rs1 >> imm}          & msb-extends \\ \hline
-\code{slt}  & Set Less Than Imm       & I  & \code{0010011} & 0x2 &       & \code{rd = (rs1 < imm) ? 1 : 0} & \\
-\code{sltu} & Set Less Than Imm (U)   & I  & \code{0010011} & 0x3 &       & \code{rd = (rs1 < imm) ? 1 : 0} & zero-extends \\
-\code{lb}   & Load Byte               & I  & \code{0000011} & 0x0 &       & \code{rd = *rs1[0:7]}           & \\
-\code{lh}   & Load Half               & I  & \code{0000011} & 0x1 &       & \code{rd = *rs1[0:15]}          & \\
-\code{lw}   & Load Word               & I  & \code{0000011} & 0x2 &       & \code{rd = *rs1[0:31]}          & \\
-\code{lbu}  & Load Byte (U)           & I  & \code{0000011} & 0x4 &       & \code{rd = *rs1[0:7]}           & zero-extends \\
-\code{lhu}  & Load Half (U)           & I  & \code{0000011} & 0x5 &       & \code{rd = *rs1[0:15]}          & zero-extends \\ \hline
-\code{sb}   & Store Byte              & S  & \code{0100011} & 0x0 &       & \code{*rs1[0:7] \enspace = rs2[0:7]} & \\
-\code{sh}   & Store Half              & S  & \code{0100011} & 0x1 &       & \code{*rs1[0:15] = rs2[0:15]}   & \\
-\code{sw}   & Store Word              & S  & \code{0100011} & 0x2 &       & \code{*rs1[0:31] = rs2[0:31]}   & \\ \hline
-\code{beq}  & Branch ==               & B  & \code{1100011} & 0x0 &       & \code{if(rs1 == rs2) PC += imm} & \\
-\code{bne}  & Branch !=               & B  & \code{1100011} & 0x1 &       & \code{if(rs1 != rs2) PC += imm} & \\
-\code{blt}  & Branch <                & B  & \code{1100011} & 0x4 &       & \code{if(rs1 <\enspace rs2) PC += imm} & \\
-\code{bge}  & Branch $\leq$           & B  & \code{1100011} & 0x5 &       & \code{if(rs1 >= rs2) PC += imm} & \\
-\code{bltu} & Branch < (U)            & B  & \code{1100011} & 0x6 &       & \code{if(rs1 <\enspace rs2) PC += imm} & zero-extends \\
-\code{bgeu} & Branch $\geq$ (U)       & B  & \code{1100011} & 0x7 &       & \code{if(rs1 >= rs2) PC += imm} & zero-extends \\ \hline
-\code{jal}  & Jump And Link           & UJ & \code{1101111} &     &       & \code{rd = PC+4; PC += imm}     & \\
-\code{jalr} & Jump And Link Reg       & I  & \code{1100111} & 0x0 &       & \code{rd = PC+4; PC = rs1}      & \\ \hline
-\code{lui}  & Load Upper Imm          & U  & \code{0110111} &     &       & \code{rd = imm << 12}           & \\
-\code{auipc}& Add Upper Imm to PC     & U  & \code{0010111} &     &       & \code{rd = PC + (imm << 12)}    & \\ \hline
-\code{ecall}& Environment Call        & I  & \code{1110011} & 0x0 & 0x00  & Transfer control to OS          & imm: 0x000 \\ \hline
-\code{ecall}& Environment Break       & I  & \code{1110011} & 0x0 & 0x00  & Transfer control to debugger    & imm: 0x001 \\ \hline
+Inst.       & Name                    & FMT & Optt        & F3  & F7    & Description (C syntax)          & Note     \\ \hline
+\tt{add}  & ADD                     & R  & \tt{0000011} & 0x0 & 0x00  & \tt{rd = rs1 + rs2}           & \\
+\tt{sub}  & SUB                     & R  & \tt{0000011} & 0x0 & 0x20  & \tt{rd = rs1 - rs2}           & \\
+\tt{xor}  & XOR                     & R  & \tt{0000011} & 0x4 & 0x00  & \tt{rd = rs1 \^{} rs2}        & \\
+\tt{or}   & OR                      & R  & \tt{0000011} & 0x6 & 0x00  & \tt{rd = rs1 | rs2}           & \\
+\tt{and}  & AND                     & R  & \tt{0000011} & 0x7 & 0x00  & \tt{rd = rs1 \& rs2}          & \\
+\tt{sll}  & Shift Left Logical      & R  & \tt{0000011} & 0x1 & 0x00  & \tt{rd = rs1 << rs2}          & \\
+\tt{srl}  & Shift Right Logical     & R  & \tt{0000011} & 0x2 & 0x00  & \tt{rd = rs1 >> rs2}          & \\
+\tt{sra}  & Shift Right Arith*      & R  & \tt{0000011} & 0x3 & 0x20  & \tt{rd = rs1 >> rs2}          & \\ \hline
+\tt{slt}  & Set Less Than           & R  & \tt{0110011} & 0x2 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & \\
+\tt{sltu} & Set Less Than (U)       & R  & \tt{0110011} & 0x3 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & zero-extends \\
+\tt{addi} & ADD Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 + imm}           & \\
+\tt{xori} & XOR Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 \^{} imm}        & \\
+\tt{ori}  & OR Immediate            & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 | imm}           & \\
+\tt{andi} & AND Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 \& imm}          & \\
+\tt{slli} & Shift Left Logical Imm  & I  & \tt{0010011} & 0x1 & 0x00  & \tt{rd = rs1 << imm}          & \\
+\tt{srli} & Shift Right Logical Imm & I  & \tt{0010011} & 0x1 & 0x00  & \tt{rd = rs1 >> imm}          & \\
+\tt{srai} & Shift Right Arith Imm   & I  & \tt{0010011} & 0x3 & 0x20  & \tt{rd = rs1 >> imm}          & msb-extends \\ \hline
+\tt{slt}  & Set Less Than Imm       & I  & \tt{0010011} & 0x2 &       & \tt{rd = (rs1 < imm) ? 1 : 0} & \\
+\tt{sltu} & Set Less Than Imm (U)   & I  & \tt{0010011} & 0x3 &       & \tt{rd = (rs1 < imm) ? 1 : 0} & zero-extends \\
+\tt{lb}   & Load Byte               & I  & \tt{0000011} & 0x0 &       & \tt{rd = *rs1[0:7]}           & \\
+\tt{lh}   & Load Half               & I  & \tt{0000011} & 0x1 &       & \tt{rd = *rs1[0:15]}          & \\
+\tt{lw}   & Load Word               & I  & \tt{0000011} & 0x2 &       & \tt{rd = *rs1[0:31]}          & \\
+\tt{lbu}  & Load Byte (U)           & I  & \tt{0000011} & 0x4 &       & \tt{rd = *rs1[0:7]}           & zero-extends \\
+\tt{lhu}  & Load Half (U)           & I  & \tt{0000011} & 0x5 &       & \tt{rd = *rs1[0:15]}          & zero-extends \\ \hline
+\tt{sb}   & Store Byte              & S  & \tt{0100011} & 0x0 &       & \tt{*rs1[0:7] \enspace = rs2[0:7]} & \\
+\tt{sh}   & Store Half              & S  & \tt{0100011} & 0x1 &       & \tt{*rs1[0:15] = rs2[0:15]}   & \\
+\tt{sw}   & Store Word              & S  & \tt{0100011} & 0x2 &       & \tt{*rs1[0:31] = rs2[0:31]}   & \\ \hline
+\tt{beq}  & Branch ==               & B  & \tt{1100011} & 0x0 &       & \tt{if(rs1 == rs2) PC += imm} & \\
+\tt{bne}  & Branch !=               & B  & \tt{1100011} & 0x1 &       & \tt{if(rs1 != rs2) PC += imm} & \\
+\tt{blt}  & Branch <                & B  & \tt{1100011} & 0x4 &       & \tt{if(rs1 <\enspace rs2) PC += imm} & \\
+\tt{bge}  & Branch $\leq$           & B  & \tt{1100011} & 0x5 &       & \tt{if(rs1 >= rs2) PC += imm} & \\
+\tt{bltu} & Branch < (U)            & B  & \tt{1100011} & 0x6 &       & \tt{if(rs1 <\enspace rs2) PC += imm} & zero-extends \\
+\tt{bgeu} & Branch $\geq$ (U)       & B  & \tt{1100011} & 0x7 &       & \tt{if(rs1 >= rs2) PC += imm} & zero-extends \\ \hline
+\tt{jal}  & Jump And Link           & UJ & \tt{1101111} &     &       & \tt{rd = PC+4; PC += imm}     & \\
+\tt{jalr} & Jump And Link Reg       & I  & \tt{1100111} & 0x0 &       & \tt{rd = PC+4; PC = rs1}      & \\ \hline
+\tt{lui}  & Load Upper Imm          & U  & \tt{0110111} &     &       & \tt{rd = imm << 12}           & \\
+\tt{auipc}& Add Upper Imm to PC     & U  & \tt{0010111} &     &       & \tt{rd = PC + (imm << 12)}    & \\ \hline
+\tt{ecall}& Environment Call        & I  & \tt{1110011} & 0x0 & 0x00  & Transfer control to OS          & imm: 0x000 \\ \hline
+\tt{ebreak} & Environment Break     & I  & \tt{1110011} & 0x0 & 0x00  & Transfer control to debugger    & imm: 0x001 \\ \hline
 
 \end{tabular}

@@ -1,17 +1,23 @@
 \section*{Registers}
 
-\begin{tabular} {c | c | l | l}
-Register       & Name     & Use                   & Saver  \\ \hline
-\code{x0}      & \code{zero} & Zero constant         & N/A    \\
-\code{x1}      & \code{ra}       & Return address        & Caller \\
-\code{x2}      & \code{sp}       & Stack pointer         & -      \\
-\code{x3}      & \code{gp}       & Global pointer        & -      \\
-\code{x4}      & \code{tp}       & Thread pointer        & Callee \\
-\code{x5}      & \code{t0-t2}    & Temporaries           & Caller \\
-\code{x8}      & \code{s0 / fp}  & Saved / frame pointer & Callee \\
-\code{x9}      & \code{s1}       & Saved register        & Callee \\
-\code{x10-x11} & \code{a0-a1}    & Fn args / return      & Caller \\
-\code{x12-x17} & \code{a2-a7}    & Fn args               & Caller \\
-\code{x18-x27} & \code{s2-s11}   & Saved registers       & Callee \\
-\code{x28-x31} & \code{t3-t6}    & Temporaries           & Caller \\
+\begin{tabular} {l | l | l | l} \hline
+Register     & ABI Name     & Description           & Saver  \\ \hline
+\tt{x0}      & \tt{zero}    & Zero constant         & -      \\
+\tt{x1}      & \tt{ra}      & Return address        & Caller \\
+\tt{x2}      & \tt{sp}      & Stack pointer         & -      \\
+\tt{x3}      & \tt{gp}      & Global pointer        & -      \\
+\tt{x4}      & \tt{tp}      & Thread pointer        & Callee \\
+\tt{x5}      & \tt{t0-t2}   & Temporaries           & Caller \\
+\tt{x8}      & \tt{s0 / fp} & Saved / frame pointer & Callee \\
+\tt{x9}      & \tt{s1}      & Saved register        & Callee \\
+\tt{x10-x11} & \tt{a0-a1}   & Fn args/return values & Caller \\
+\tt{x12-x17} & \tt{a2-a7}   & Fn args               & Caller \\
+\tt{x18-x27} & \tt{s2-s11}  & Saved registers       & Callee \\
+\tt{x28-x31} & \tt{t3-t6}   & Temporaries           & Caller \\ \hline
+\tt{f0-7}    & \tt{ft0-7}   & FP temporaries        & Caller \\
+\tt{f8-9}    & \tt{fs0-1}   & FP saved registers    & Callee \\
+\tt{f10-11}  & \tt{fa0-1}   & FP args/return values & Caller \\
+\tt{f12-17}  & \tt{fa2-7}   & FP args               & Caller \\
+\tt{f18-27}  & \tt{fs2-11}  & FP saved registers    & Callee \\
+\tt{f28-31}  & \tt{ft8-11}  & FP temporaries        & Caller \\ \hline
 \end{tabular}

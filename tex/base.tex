@@ -73,7 +73,7 @@
 
 \begin{tabular}
 {l | l | c | c | c | c | l | l} \hline
-Inst.       & Name                    & FMT & Optt        & F3  & F7    & Description (C syntax)          & Note     \\ \hline
+Inst.     & Name                    & FMT& Opcode       & F3  & F7    & Description (C syntax)        & Note     \\ \hline
 \tt{add}  & ADD                     & R  & \tt{0000011} & 0x0 & 0x00  & \tt{rd = rs1 + rs2}           & \\
 \tt{sub}  & SUB                     & R  & \tt{0000011} & 0x0 & 0x20  & \tt{rd = rs1 - rs2}           & \\
 \tt{xor}  & XOR                     & R  & \tt{0000011} & 0x4 & 0x00  & \tt{rd = rs1 \^{} rs2}        & \\
@@ -82,8 +82,8 @@ Inst.       & Name                    & FMT & Optt        & F3  & F7    & Descri
 \tt{sll}  & Shift Left Logical      & R  & \tt{0000011} & 0x1 & 0x00  & \tt{rd = rs1 << rs2}          & \\
 \tt{srl}  & Shift Right Logical     & R  & \tt{0000011} & 0x2 & 0x00  & \tt{rd = rs1 >> rs2}          & \\
 \tt{sra}  & Shift Right Arith*      & R  & \tt{0000011} & 0x3 & 0x20  & \tt{rd = rs1 >> rs2}          & \\
-\tt{slt}  & Set Less Than           & R  & \tt{0110011} & 0x2 &       & \tt{rd = (rs1 < rs2) \? 1 : 0} & \\
-\tt{sltu} & Set Less Than (U)       & R  & \tt{0110011} & 0x3 &       & \tt{rd = (rs1 < rs2) \? 1 : 0} & zero-extends \\ \hline
+\tt{slt}  & Set Less Than           & R  & \tt{0110011} & 0x2 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & \\
+\tt{sltu} & Set Less Than (U)       & R  & \tt{0110011} & 0x3 &       & \tt{rd = (rs1 < rs2) ? 1 : 0} & zero-extends \\ \hline
 \tt{addi} & ADD Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 + imm}           & \\
 \tt{xori} & XOR Immediate           & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 \^{} imm}        & \\
 \tt{ori}  & OR Immediate            & I  & \tt{0010011} & 0x0 & 0x00  & \tt{rd = rs1 | imm}           & \\

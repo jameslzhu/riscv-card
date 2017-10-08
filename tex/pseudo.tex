@@ -1,1 +1,61 @@
 \section*{Pseudo Instructions}
+\small
+\begin{tabular}{l l l}
+Pseudoinstruction & Base Instruction(s) & Meaning \\ \hline
+
+\multirow{2}{*}{\tt la rd, symbol} & {\tt auipc rd, symbol[31:12]} & \multirow{2}{*}{Load address} \\
+                                   & {\tt addi rd, rd, symbol[11:0]} \\
+\multirow{2}{*}{\tt l\{b|h|w|d\} rd, symbol} & {\tt auipc rd, symbol[31:12]} & \multirow{2}{*}{Load global} \\
+                                           & {\tt l\{b|h|w|d\} rd, symbol[11:0](rd)} \\
+\multirow{2}{*}{\tt s\{b|h|w|d\} rd, symbol, rt} & {\tt auipc rt, symbol[31:12]} & \multirow{2}{*}{Store global} \\
+                                               & {\tt s\{b|h|w|d\} rd, symbol[11:0](rt)} \\
+\multirow{2}{*}{\tt fl\{w|d\} rd, symbol, rt} & {\tt auipc rt, symbol[31:12]} & \multirow{2}{*}{Floating-point load global} \\
+                                            & {\tt fl\{w|d\} rd, symbol[11:0](rt)} \\
+\multirow{2}{*}{\tt fs\{w|d\} rd, symbol, rt} & {\tt auipc rt, symbol[31:12]} & \multirow{2}{*}{Floating-point store global} \\
+                                            & {\tt fs\{w|d\} rd, symbol[11:0](rt)} \\
+\hline
+{\tt nop} & {\tt addi x0, x0, 0} & No operation \\
+{\tt li rd, immediate} & {\em Myriad sequences} & Load immediate \\
+{\tt mv rd, rs} & {\tt addi rd, rs, 0} & Copy register \\
+{\tt not rd, rs} & {\tt xori rd, rs, -1} & One's complement \\
+{\tt neg rd, rs} & {\tt sub rd, x0, rs} & Two's complement \\
+{\tt negw rd, rs} & {\tt subw rd, x0, rs} & Two's complement word \\
+{\tt sext.w rd, rs} & {\tt addiw rd, rs, 0} & Sign extend word \\
+{\tt seqz rd, rs} & {\tt sltiu rd, rs, 1} & Set if $=$ zero \\
+{\tt snez rd, rs} & {\tt sltu rd, x0, rs} & Set if $\neq$ zero \\
+{\tt sltz rd, rs} & {\tt slt rd, rs, x0} & Set if $<$ zero \\
+{\tt sgtz rd, rs} & {\tt slt rd, x0, rs} & Set if $>$ zero \\
+\hline
+{\tt fmv.s rd, rs} & {\tt fsgnj.s rd, rs, rs} & Copy single-precision register \\
+{\tt fabs.s rd, rs} & {\tt fsgnjx.s rd, rs, rs} & Single-precision absolute value \\
+{\tt fneg.s rd, rs} & {\tt fsgnjn.s rd, rs, rs} & Single-precision negate \\
+{\tt fmv.d rd, rs} & {\tt fsgnj.d rd, rs, rs} & Copy double-precision register \\
+{\tt fabs.d rd, rs} & {\tt fsgnjx.d rd, rs, rs} & Double-precision absolute value \\
+{\tt fneg.d rd, rs} & {\tt fsgnjn.d rd, rs, rs} & Double-precision negate \\
+\hline
+{\tt beqz rs, offset} & {\tt beq rs, x0, offset} & Branch if $=$ zero \\
+{\tt bnez rs, offset} & {\tt bne rs, x0, offset} & Branch if $\neq$ zero \\
+{\tt blez rs, offset} & {\tt bge x0, rs, offset} & Branch if $\leq$ zero \\
+{\tt bgez rs, offset} & {\tt bge rs, x0, offset} & Branch if $\geq$ zero \\
+{\tt bltz rs, offset} & {\tt blt rs, x0, offset} & Branch if $<$ zero \\
+{\tt bgtz rs, offset} & {\tt blt x0, rs, offset} & Branch if $>$ zero \\
+\hline
+{\tt bgt rs, rt, offset} & {\tt blt rt, rs, offset} & Branch if $>$ \\
+{\tt ble rs, rt, offset} & {\tt bge rt, rs, offset} & Branch if $\leq$ \\
+{\tt bgtu rs, rt, offset} & {\tt bltu rt, rs, offset} & Branch if $>$, unsigned \\
+{\tt bleu rs, rt, offset} & {\tt bgeu rt, rs, offset} & Branch if $\leq$, unsigned \\
+\hline
+{\tt j offset} & {\tt jal x0, offset} & Jump \\
+{\tt jal offset} & {\tt jal x1, offset} & Jump and link \\
+{\tt jr rs} & {\tt jalr x0, rs, 0} & Jump register \\
+{\tt jalr rs} & {\tt jalr x1, rs, 0} & Jump and link register \\
+{\tt ret} & {\tt jalr x0, x1, 0} & Return from subroutine \\
+\multirow{2}{*}{\tt call offset} & {\tt auipc x1, offset[31:12]} & \multirow{2}{*}{Call far-away subroutine} \\
+                                 & {\tt jalr x1, x1, offset[11:0]} \\
+\multirow{2}{*}{\tt tail offset} & {\tt auipc x6, offset[31:12]} & \multirow{2}{*}{Tail call far-away subroutine} \\
+                                 & {\tt jalr x0, x6, offset[11:0]} & \\
+\hline
+{\tt fence} & {\tt fence iorw, iorw} & Fence on all memory and I/O \\
+\hline
+
+\end{tabular}

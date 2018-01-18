@@ -1,0 +1,71 @@
+\usepackage[margin=0.75in]{geometry}
+\usepackage{lmodern}
+\usepackage[bitstream-charter]{mathdesign}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{array}
+\usepackage{titling}
+\usepackage{graphics}
+\usepackage{multirow}
+\usepackage{fancyhdr}
+
+\graphicspath{img}
+
+% New column types to use in tabular environment for instruction formats.
+% Allocate 0.18in per bit.
+% \newcolumntype{I}{>{\centering\arraybackslash}p{0.18in}}
+% Two-bit centered column.
+\newcolumntype{W}{>{\centering\arraybackslash}p{0.36in}}
+% Three-bit centered column.
+\newcolumntype{F}{>{\centering\arraybackslash}p{0.54in}}
+% Four-bit centered column.
+% \newcolumntype{Y}{>{\centering\arraybackslash}p{0.72in}}
+% Five-bit centered column.
+\newcolumntype{R}{>{\centering\arraybackslash}p{0.9in}}
+% Six-bit centered column.
+% \newcolumntype{S}{>{\centering\arraybackslash}p{1.08in}}
+% Seven-bit centered column.
+\newcolumntype{O}{>{\centering\arraybackslash}p{1.26in}}
+% Eight-bit centered column.
+% \newcolumntype{E}{>{\centering\arraybackslash}p{1.44in}}
+% Ten-bit centered column.
+% \newcolumntype{T}{>{\centering\arraybackslash}p{1.8in}}
+% Twelve-bit centered column.
+% \newcolumntype{M}{>{\centering\arraybackslash}p{2.2in}}
+% Sixteen-bit centered column.
+% \newcolumntype{K}{>{\centering\arraybackslash}p{2.88in}}
+% Twenty-bit centered column.
+% \newcolumntype{U}{>{\centering\arraybackslash}p{3.6in}}
+% Twenty-bit centered column.
+% \newcolumntype{L}{>{\centering\arraybackslash}p{3.6in}}
+% Twenty-five-bit centered column.
+% \newcolumntype{J}{>{\centering\arraybackslash}p{4.5in}}
+
+% Typewriter font 
+\newcolumntype{T}{>{\texttt\bgroup}l<{\egroup}}
+% Typewriter font (code) 
+\newcolumntype{C}{>{\texttt\bgroup}p{2.5in}<{\egroup}}
+
+\newcommand{\instbit}[1]{\mbox{\scriptsize #1}}
+\newcommand{\instbitrange}[2]{~\instbit{#1} \hfill \instbit{#2}~}
+
+%% Header / Footer %%
+
+\newcommand{\headerfont}{\fontfamily{lmr}\selectfont}
+\pagestyle{fancy}
+% \headheight=32pt
+% \footskip=32pt
+\lhead{\headerfont RISC-V Reference Card}
+\rhead{\headerfont V0.1}
+
+%% Title %%
+
+\pretitle{\vspace{-0.75in}\begin{center}\LARGE \textbf }
+\title{RISC-V Reference Card}
+\posttitle{\par\end{center}}
+\preauthor{}
+\author{}
+\postauthor{}
+\predate{}
+\date{}
+\postdate{}

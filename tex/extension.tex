@@ -1,20 +1,67 @@
-\subsection*{Standard Extensions}
 
-\subsubsection*{RV32M Multiply Extension}
+\section*{Standard Extensions}
+
+\subsection*{RV32M Multiply Extension}
+\begin{center}
 \begin{tabular}
-{l | l | c | c | c | l | l } \hline
-Inst.       & Name              & FMT   & Optt         & F3  & F7  & Description                \\ \hline
-\tt{mul}  & MUL               & R     & \tt{0110011} & 0x0 & 0x1 & \tt{rd = (rs1 * rs2)[31:0]}  \\
-\tt{mulh} & MUL High          & R     & \tt{0110011} & 0x1 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
-\tt{mulsu}& MUL High (S) (U)  & R     & \tt{0110011} & 0x2 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
-\tt{mulu} & MUL High (U)      & R     & \tt{0110011} & 0x3 & 0x1 & \tt{rd = (rs1 * rs2)[63:32]} \\
-\tt{div}  & DIV               & R     & \tt{0110011} & 0x4 & 0x1 & \tt{rd = rs1 / rs2}          \\
-\tt{divu} & DIV (U)           & R     & \tt{0110011} & 0x5 & 0x1 & \tt{rd = rs1 / rs2}          \\
-\tt{rem}  & Remainder         & R     & \tt{0110011} & 0x6 & 0x1 & \tt{rd = rs1 \% rs2}         \\
-\tt{remu} & Remainder (U)     & R     & \tt{0110011} & 0x7 & 0x1 & \tt{rd = rs1 \% rs2}         \\
+{T | l | c | T | T | T | C } \hline
+\rm Inst & Name              & FMT & \rm Opcode & \rm F3 & \rm F7 & \rm Description (C)     \\ \hline
+mul      & MUL               & R   & 0110011    & 0x0    & 0x01   & rd = (rs1 * rs2)[31:0]  \\
+mulh     & MUL High          & R   & 0110011    & 0x1    & 0x01   & rd = (rs1 * rs2)[63:32] \\
+mulsu    & MUL High (S) (U)  & R   & 0110011    & 0x2    & 0x01   & rd = (rs1 * rs2)[63:32] \\
+mulu     & MUL High (U)      & R   & 0110011    & 0x3    & 0x01   & rd = (rs1 * rs2)[63:32] \\
+div      & DIV               & R   & 0110011    & 0x4    & 0x01   & rd = rs1 / rs2          \\
+divu     & DIV (U)           & R   & 0110011    & 0x5    & 0x01   & rd = rs1 / rs2          \\
+rem      & Remainder         & R   & 0110011    & 0x6    & 0x01   & rd = rs1 \% rs2         \\
+remu     & Remainder (U)     & R   & 0110011    & 0x7    & 0x01   & rd = rs1 \% rs2         \\
 \hline
 \end{tabular}
+\end{center}
 
-\subsubsection*{RV32F / D Floating-Point Extensions}
+\subsection*{RV32A Atomic Extension}
 
-\subsubsection*{RV32A Atomic Extension}
+\
+
+\begin{center}
+\begin{tabular}{R@{}W@{}W@{}R@{}R@{}F@{}R@{}O}
+\\
+\instbitrange{31}{27} &
+\instbit{26} &
+\instbit{25} &
+\instbitrange{24}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{funct5} &
+\multicolumn{1}{c|}{aq} &
+\multicolumn{1}{c|}{rl} &
+\multicolumn{1}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+5 & 1 & 1 & 5 & 5 & 3 & 5 & 7 \\
+\end{tabular}
+
+\begin{tabular}
+{T | l | c | T | T | T | T } \hline
+\rm Inst  & Name              & FMT   & \rm Opcode & \rm F3 & \rm F5 & \rm Description (C)         \\ \hline
+lr.w      & Load Reserved     & R     & 0101111    & 0x2    & 0x02   & rd = M[rs1], reserve M[rs1] \\
+sc.w      & Store Conditional & R     & 0101111    & 0x2    & 0x03   & \parbox[t]{2.5in}{ if (reserved) \{ M[rs1] = rs2; rd = 0 \} \\
+                                                                        else \{ rd = 1 \}}   \\
+amoswap.w & Atomic Swap       & R     & 0101111    & 0x2    & 0x01   & \\
+amoadd.w  & Atomic ADD        & R     & 0101111    & 0x2    & 0x00   & \\
+amoand.w  & Atomic AND        & R     & 0101111    & 0x2    & 0x0C   & \\
+amoor.w   & Atomic OR         & R     & 0101111    & 0x2    & 0x0A   & \\
+amoxor.w  & Atomix XOR        & R     & 0101111    & 0x2    & 0x04   & \\
+amomax.w  & Atomic MAX        & R     & 0101111    & 0x2    & 0x14   & \\
+amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & \\
+\hline
+\end{tabular}
+\end{center}
+
+
+\subsection*{RV32F / D Floating-Point Extensions}

@@ -1,39 +1,6 @@
 \documentclass{article}
 
-\usepackage[bitstream-charter]{mathdesign}
-\usepackage[margin=0.75in]{geometry}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{titling}
-\usepackage{graphics}
-\usepackage{multirow}
-\usepackage{fancyhdr}
-
-\graphicspath{img}
-
-\newcommand{\instbit}[1]{\mbox{\scriptsize #1}}
-\newcommand{\instbitrange}[2]{~\instbit{#1} \hfill \instbit{#2}~}
-
-%% Header / Footer %%
-
-\newcommand{\headerfont}{\fontfamily{lmr}\selectfont}
-\pagestyle{fancy}
-% \headheight=32pt
-% \footskip=32pt
-\lhead{\headerfont RISC-V Reference Card}
-\rhead{\headerfont V0.1}
-
-%% Title %%
-
-\pretitle{\vspace{-0.75in}\begin{center}\LARGE \textbf }
-\title{RISC-V Reference Card}
-\posttitle{\par\end{center}}
-\preauthor{}
-\author{}
-\postauthor{}
-\predate{}
-\date{}
-\postdate{}
+\input{tex/preamble}
 
 %% Document %%
 \begin{document}

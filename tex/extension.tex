@@ -1,4 +1,3 @@
-
 \section*{Standard Extensions}
 
 \subsection*{RV32M Multiply Extension}
@@ -20,11 +19,13 @@ remu     & Remainder (U)     & R   & 0110011    & 0x7    & 0x01   & rd = rs1 \% 
 
 \subsection*{RV32A Atomic Extension}
 
-\
+\begin{itemize}
+    \item \texttt{aq}: acquire access bit -- this operation must occur before later memory ops
+    \item \texttt{rl}: release access bit -- this operation must occur after earlier memory ops
+\end{itemize}
 
 \begin{center}
 \begin{tabular}{R@{}W@{}W@{}R@{}R@{}F@{}R@{}O}
-\\
 \instbitrange{31}{27} &
 \instbit{26} &
 \instbit{25} &
@@ -52,13 +53,13 @@ remu     & Remainder (U)     & R   & 0110011    & 0x7    & 0x01   & rd = rs1 \% 
 lr.w      & Load Reserved     & R     & 0101111    & 0x2    & 0x02   & rd = M[rs1], reserve M[rs1] \\
 sc.w      & Store Conditional & R     & 0101111    & 0x2    & 0x03   & \parbox[t]{2.5in}{ if (reserved) \{ M[rs1] = rs2; rd = 0 \} \\
                                                                         else \{ rd = 1 \}}   \\
-amoswap.w & Atomic Swap       & R     & 0101111    & 0x2    & 0x01   & \\
-amoadd.w  & Atomic ADD        & R     & 0101111    & 0x2    & 0x00   & \\
-amoand.w  & Atomic AND        & R     & 0101111    & 0x2    & 0x0C   & \\
-amoor.w   & Atomic OR         & R     & 0101111    & 0x2    & 0x0A   & \\
-amoxor.w  & Atomix XOR        & R     & 0101111    & 0x2    & 0x04   & \\
-amomax.w  & Atomic MAX        & R     & 0101111    & 0x2    & 0x14   & \\
-amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & \\
+amoswap.w & Atomic Swap       & R     & 0101111    & 0x2    & 0x01   & rd = M[rs1]; swap(rd, rs2); M[rs1] = rd \\
+amoadd.w  & Atomic ADD        & R     & 0101111    & 0x2    & 0x00   & rd = M[rs1] + rs2; M[rs1] = rd \\
+amoand.w  & Atomic AND        & R     & 0101111    & 0x2    & 0x0C   & rd = M[rs1] \& rs2; M[rs1] = rd \\
+amoor.w   & Atomic OR         & R     & 0101111    & 0x2    & 0x0A   & rd = M[rs1] | rs2; M[rs1] = rd \\
+amoxor.w  & Atomix XOR        & R     & 0101111    & 0x2    & 0x04   & rd = M[rs1] \^{} rs2; M[rs1] = rd \\
+amomax.w  & Atomic MAX        & R     & 0101111    & 0x2    & 0x14   & rd = max(M[rs1], rs2); M[rs1] = rd \\
+amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & rd = min(M[rs1], rs2); M[rs1] = rd \\
 \hline
 \end{tabular}
 \end{center}

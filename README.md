@@ -10,5 +10,5 @@ This work is adapted from the RISC-V Instruction Set Manual, available at
 [https://riscv.org/specifications/][RV] and licensed
 under the Creative Commons [CC-BY-4.0][CC] license.
 
-[RV]: https://creativecommons.org/licenses/by/4.0/ "RISC-V spec"
+[RV]: https://riscv.org/specifications "RISC-V spec"
 [CC]: https://creativecommons.org/licenses/by/4.0/ "CC-BY-4.0"

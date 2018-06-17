@@ -1,10 +1,8 @@
 \usepackage[margin=0.75in]{geometry}
-% \usepackage{lmodern}
-\usepackage{charter}
-% \usepackage[bitstream-charter]{mathdesign}
 % \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{fontspec}
+\usepackage{fetamont}
+\usepackage{inconsolata}
 \usepackage{array}
 \usepackage{titling}
 \usepackage{graphics}
@@ -43,11 +41,7 @@
 % Twenty-five-bit centered column.
 % \newcolumntype{J}{>{\centering\arraybackslash}p{4.5in}}
 
-\newfontfamily{\nasa}{Nasalization}
-
-\setmainfont{Charter}
-\setsansfont{Fira Sans}
-\setmonofont{Inconsolata}
+\renewcommand{\familydefault}{bch}
 
 % Typewriter font 
 \newcolumntype{T}{>{\texttt\bgroup}l<{\egroup}}
@@ -61,17 +55,16 @@
 
 \newcommand{\headerfont}{\fontfamily{lmr}\selectfont}
 \pagestyle{fancy}
-% \headheight=32pt
+\headheight=24pt
 % \footskip=32pt
 \lhead{\headerfont RISC-V Reference Card}
 \rhead{\headerfont V0.1}
 
-
 %% Title %%
 
-\pretitle{\vspace{-0.75in}\begin{center} \nasa \LARGE \textbf }
-\title{RISC-V Reference Card}
-\posttitle{\par\end{center}}
+\pretitle{\vspace{-0.75in}\begin{center} \huge \ffmfamily \bfseries}
+\title{RISC-V Reference}
+\posttitle{\end{center}}
 \preauthor{}
 \author{}
 \postauthor{}

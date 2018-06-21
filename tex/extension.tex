@@ -69,33 +69,33 @@ amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & rd = min(
 \begin{center}
 \begin{tabular}
 {T | l | c | T | T | T | T } \hline
-\rm Inst  & Name              & FMT   & \rm Opcode & \rm F3 & \rm F5 & \rm Description (C)         \\ \hline
-flw       &                   & R     &            &        &        & \\
-fsw       &                   & R     &            &        &        & \\
-fmadd.s   &                   & R     &            &        &        & \\
-fmsub.s   &                   & R     &            &        &        & \\
-fnmsub.s  &                   & R     &            &        &        & \\
-fnmadd.s  &                   & R     &            &        &        & \\
-fadd.s    &                   & R     &            &        &        & \\
-fsub.s    &                   & R     &            &        &        & \\
-fmul.s    &                   & R     &            &        &        & \\
-fdiv.s    &                   & R     &            &        &        & \\
-fsqrt.s   &                   & R     &            &        &        & \\
-fsgnj.s   &                   & R     &            &        &        & \\
-fsgnjn.s  &                   & R     &            &        &        & \\
-fsgnjx.s  &                   & R     &            &        &        & \\
-fmin.s    &                   & R     &            &        &        & \\
-fmax.s    &                   & R     &            &        &        & \\
-fcvt.w.s  &                   & R     &            &        &        & \\
-fcvt.wu.s &                   & R     &            &        &        & \\
-fmv.x.w   &                   & R     &            &        &        & \\
-feq.s     &                   & R     &            &        &        & \\
-flt.s     &                   & R     &            &        &        & \\
-fle.s     &                   & R     &            &        &        & \\
-fclass.s  &                   & R     &            &        &        & \\
-fcvt.s.w  &                   & R     &            &        &        & \\
-fcvt.s.wu &                   & R     &            &        &        & \\
-fmv.w.x   &                   & R     &            &        &        & \\
+\rm Inst  & Name                  & FMT   & \rm Opcode & \rm F3 & \rm F5 & \rm Description (C)         \\ \hline
+flw       & Flt Load Word         & *     &            &        &        & rd = M[rs1] + imm    \\
+fsw       & Flt Store Word        & *     &            &        &        & M[rs1 + imm] = rs2   \\
+fmadd.s   & Flt Fused Mul-Add     & *     &            &        &        & rd = rs1 * rs2 + rs3 \\
+fmsub.s   & Flt Fused Mul-Sub     & *     &            &        &        & rd = rs1 * rs2 - rs3 \\
+fnmadd.s  & Flt Neg Fused Mul-Add & *     &            &        &        & rd = -rs1 * rs2 + rs3 \\
+fnmsub.s  & Flt Neg Fused Mul-Sub & *     &            &        &        & rd = -rs1 * rs2 - rs3 \\
+fadd.s    & Flt Add               & *     &            &        &        & rd = rs1 + rs2       \\
+fsub.s    & Flt Sub               & *     &            &        &        & rd = rs1 - rs2       \\
+fmul.s    & Flt Mul               & *     &            &        &        & rd = rs1 * rs2       \\
+fdiv.s    & Flt Div               & *     &            &        &        & rd = rs1 / rs2       \\
+fsqrt.s   & Flt Square Root       & *     &            &        &        & rd = sqrt(rs1)       \\
+fsgnj.s   & Flt Sign Injection    & *     &            &        &        & rd = abs(rs1) * sgn(rs2) \\
+fsgnjn.s  & Flt Sign Neg Injection& *     &            &        &        & rd = abs(rs1) * -sgn(rs2) \\
+fsgnjx.s  & Flt Sign Xor Injection& *     &            &        &        & rd = rs1 * sgn(rs2)  \\
+fmin.s    & Flt Minimum           & *     &            &        &        & rd = min(rs1, rs2)   \\
+fmax.s    & Flt Maximum           & *     &            &        &        & rd = max(rs1, rs2)   \\
+fcvt.s.w  & Flt Conv from Sign Int& *     &            &        &        & rd = (float) rs1 \\
+fcvt.s.wu & Flt Conv from Uns Int & *     &            &        &        & rd = (float) rs1 \\
+fcvt.w.s  & Flt Convert to Int    & *     &            &        &        & rd = (int32\_t) rs1 \\
+fcvt.wu.s & Flt Convert to Int    & *     &            &        &        & rd = (uint32\_t) rs1 \\
+fmv.x.w   & Move Float to Int     & *     &            &        &        & rd = *((int*) \&rs1) \\
+fmv.w.x   & Move Int to Float     & *     &            &        &        & rd = *((float*) \&rs1) \\
+feq.s     & Float Equality        & *     &            &        &        & rd = (rs1 == rs2) ? 1 : 0 \\
+flt.s     & Float Less Than       & *     &            &        &        & rd = (rs1 <  rs2) ? 1 : 0 \\
+fle.s     & Float Less / Equal    & *     &            &        &        & rd = (rs1 <= rs2) ? 1 : 0\\
+fclass.s  & Float Classify        & *     &            &        &        & rd = 0..9 \\
 \hline
 \end{tabular}
 \end{center}

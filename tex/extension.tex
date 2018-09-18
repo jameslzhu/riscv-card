@@ -99,3 +99,168 @@ fclass.s  & Float Classify        & *     &            &        &        & rd = 
 \hline
 \end{tabular}
 \end{center}
+
+\subsection*{RV32C Compressed Extension}
+
+\small
+\begin{center}
+\begin{tabular}
+{p{0in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}l}
+%&
+%\multicolumn{1}{l}{\instbit{31}} &
+%\multicolumn{1}{r}{\instbit{27}} &
+%\instbit{26} &
+%\instbit{25} &
+%\multicolumn{1}{l}{\instbit{24}} &
+%\multicolumn{1}{r}{\instbit{20}} &
+%\instbitrange{19}{15} &
+%\instbitrange{14}{12} &
+%\instbitrange{11}{7} &
+%\instbitrange{6}{0} \\
+%\cline{2-11}
+
+&
+\instbit{15} &
+\instbit{14} &
+\instbit{13} &
+\multicolumn{1}{c}{\instbit{12}} &
+\instbit{11} &
+\instbit{10} &
+\instbit{9} &
+\instbit{8} &
+\instbit{7} &
+\instbit{6} &
+\instbit{5} &
+\instbit{4} &
+\instbit{3} &
+\instbit{2} &
+\instbit{1} &
+\instbit{0} \\
+\cline{2-17}
+
+&
+\multicolumn{4}{|c|}{funct4} &
+\multicolumn{5}{c|}{rd/rs1} &
+\multicolumn{5}{c|}{rs2} &
+\multicolumn{2}{c|}{op} &
+CR-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{1}{c|}{imm} &
+\multicolumn{5}{c|}{rd/rs1} &
+\multicolumn{5}{c|}{imm} &
+\multicolumn{2}{c|}{op} &
+CI-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{6}{c|}{imm} &
+\multicolumn{5}{c|}{rs2} &
+\multicolumn{2}{c|}{op} &
+CSS-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{8}{c|}{imm} &
+\multicolumn{3}{c|}{rd'} &
+\multicolumn{2}{c|}{op} &
+CIW-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{3}{c|}{imm} &
+\multicolumn{3}{c|}{rs1'} &
+\multicolumn{2}{c|}{imm} &
+\multicolumn{3}{c|}{rd'} &
+\multicolumn{2}{c|}{op} &
+CL-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{3}{c|}{imm} &
+\multicolumn{3}{c|}{rd'/rs1'} &
+\multicolumn{2}{c|}{imm} &
+\multicolumn{3}{c|}{rs2'} &
+\multicolumn{2}{c|}{op} &
+CS-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{3}{c|}{imm} &
+\multicolumn{3}{c|}{rs1'} &
+\multicolumn{5}{c|}{imm} &
+\multicolumn{2}{c|}{op} &
+CB-type \\
+\cline{2-17}
+
+&
+\multicolumn{3}{|c|}{funct3} &
+\multicolumn{11}{c|}{offset} &
+\multicolumn{2}{c|}{op} &
+CJ-type \\
+\cline{2-17}
+
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}
+{T | l | c | T | T | T } \hline
+\rm Inst   & Name                    & FMT & \rm OP & \rm Funct & \rm Description          \\ \hline
+c.lwsp     & Load Word from SP       & CI  & 10     & 010       & lw rd, (4*imm)(sp)       \\
+%c.ldsp     & Load Double from SP     & CI  & 10     & 011       & ld rd, (8*imm)(sp)       \\
+%c.lqsp     & Load Quad from SP       & CI  & 10     & 001       & lq rd, (16*imm)(sp)      \\
+%c.flwsp    & Flt Load Word from SP   & CI  & 10     & 011       & flw rd, (4*imm)(sp)      \\
+%c.fldsp    & Flt Load Double from SP & CI  & 10     & 001       & flw rd, (8*imm)(sp)      \\
+c.swsp     & Store Word to SP        & CSS & 10     & 110       & sw rs2, (4*imm)(sp)      \\
+%c.sdsp     & Store Double to SP      & CSS & 10     & 111       & sd rs2, (8*imm)(sp)      \\
+%c.sqsp     & Store Quad to SP        & CSS & 10     & 101       & sq rs2, (16*imm)(sp)     \\
+%c.fswsp    & Flt Store Word to SP    & CSS & 10     & 111       & fsw rs2, (4*imm)(sp)     \\
+%c.fsdsp    & Flt Store Double to SP  & CSS & 10     & 101       & fsd rs2, (8*imm)(sp)     \\
+c.lw       & Load Word               & CL  & 00     & 010       & lw rd', (4*imm)(rs1')    \\
+%c.ld       & Load Double             & CL  & 00     & 011       & ld rd', (8*imm)(rs1')    \\
+%c.lq       & Load Quad               & CL  & 00     & 001       & lq rd', (16*imm)(rs1')   \\
+%c.flw      & Flt Load Word           & CL  & 00     & 011       & flw rd', (4*imm)(rs1')   \\
+%c.fld      & Flt Load Double         & CL  & 00     & 001       & flw rd', (8*imm)(rs1')   \\
+c.sw       & Store Word              & CS  & 00     & 110       & sw rs1', (4*imm)(rs2')    \\
+%c.sd       & Store Double            & CS  & 00     & 111       & sd rs1', (8*imm)(rs2')   \\
+%c.sq       & Store Quad              & CS  & 00     & 101       & sq rs1', (16*imm)(rs2')  \\
+%c.fsw      & Flt Store Word          & CS  & 00     & 111       & fsw rs1', (4*imm)(rs2')  \\
+%c.fsd      & Flt Store Double        & CS  & 00     & 101       & fsd rs1', (8*imm)(rs2')  \\
+c.j        & Jump                    & CJ  & 01     & 101       & jal x0, 2*offset         \\
+c.jal      & Jump And Link           & CJ  & 01     & 001       & jal ra, 2*offset         \\
+c.jr       & Jump Reg                & CR  & 10     & 1000      & jalr x0, rs1, 0          \\
+c.jalr     & Jump And Link Reg       & CR  & 10     & 1001      & jalr ra, rs1, 0          \\
+c.beqz     & Branch == 0             & CB  & 01     & 110       & beq rs', x0, 2*imm       \\
+c.bnez     & Branch != 0             & CB  & 01     & 111       & bne rs', x0, 2*imm       \\
+c.li       & Load Immediate          & CI  & 01     & 010       & addi rd, x0, imm         \\
+c.lui      & Load Upper Imm          & CI  & 01     & 011       & lui rd, imm              \\
+c.addi     & ADD Immediate           & CI  & 01     & 000       & addi rd, rd, imm         \\
+%c.addiw    & ADD Immediate Word      & CI  & 01     & 001       & addiw rd, rd, imm        \\
+c.addi16sp & ADD Imm * 16 to SP      & CI  & 01     & 011       & addi sp, sp, 16*imm      \\
+c.addi4spn & ADD Imm * 4 + SP        & CIW & 00     & 000       & addi rd', sp, 4*imm      \\
+c.slli     & Shift Left Logical Imm  & CI  & 10     & 000       & slli rd, rd, imm         \\
+c.srli     & Shift Right Logical Imm & CB  & 01     & 100x00    & srli rd', rd', imm       \\
+c.srai     & Shift Right Arith Imm   & CB  & 01     & 100x01    & srai rd', rd', imm       \\
+c.andi     & AND Imm                 & CB  & 01     & 100x10    & andi rd', rd', imm       \\
+c.mv       & MoVe                    & CR  & 10     & 1000      & add rd, x0, rs2          \\
+c.add      & ADD                     & CR  & 10     & 1001      & add rd, rd, rs2          \\
+c.and      & AND                     & CS  & 01     & 10001111  & and rd', rd', rs2'       \\
+c.or       & OR                      & CS  & 01     & 10001110  & or rd', rd', rs2'        \\
+c.xor      & XOR                     & CS  & 01     & 10001101  & xor rd', rd', rs2'       \\
+c.sub      & SUB                     & CS  & 01     & 10001100  & sub rd', rd', rs2'       \\
+%c.addw     & ADD Word                & CS  & 01     & 10011101  & addw rd', rd', rs2'      \\
+%c.subw     & SUB Word                & CS  & 01     & 10011100  & subw rd', rd', rs2'      \\
+c.nop      & No OPeration            & CI  & 01     & 000       & addi x0, x0, 0           \\
+c.ebreak   & Environment BREAK       & CR  & 10     & 1001      & ebreak                   \\
+\hline
+\end{tabular}
+\end{center}

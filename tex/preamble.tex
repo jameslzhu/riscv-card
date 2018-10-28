@@ -56,18 +56,19 @@
 \newcommand{\headerfont}{\fontfamily{lmr}\selectfont}
 \pagestyle{fancy}
 \headheight=24pt
-% \footskip=32pt
+\footskip=24pt
 \lhead{\headerfont RISC-V Reference Card}
 \rhead{\headerfont V0.1}
+\rfoot{(c) James Zhu, 2018}
 
 %% Title %%
 
 \pretitle{\vspace{-0.75in}\begin{center} \huge \ffmfamily \bfseries}
 \title{RISC-V Reference}
 \posttitle{\end{center}}
-\preauthor{}
-\author{}
-\postauthor{}
+\preauthor{\begin{center} \sffamily}
+\author{James Zhu <jameszhu@berkeley.edu>}
+\postauthor{\end{center}}
 \predate{}
 \date{}
 \postdate{}

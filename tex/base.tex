@@ -106,7 +106,7 @@ bge      & Branch $\leq$           & B   & 1100011    & 0x5    &        & if(rs1
 bltu     & Branch < (U)            & B   & 1100011    & 0x6    &        & if(rs1 < \enspace rs2) PC += imm & zero-extends \\
 bgeu     & Branch $\geq$ (U)       & B   & 1100011    & 0x7    &        & if(rs1 >= rs2) PC += imm     & zero-extends \\ \hline
 jal      & Jump And Link           & J   & 1101111    &        &        & rd = PC+4; PC += imm         & \\
-jalr     & Jump And Link Reg       & I   & 1100111    & 0x0    &        & rd = PC+4; PC = rs1          & \\ \hline
+jalr     & Jump And Link Reg       & I   & 1100111    & 0x0    &        & rd = PC+4; PC = rs1 + imm    & \\ \hline
 lui      & Load Upper Imm          & U   & 0110111    &        &        & rd = imm \verb|<<| 12        & \\
 auipc    & Add Upper Imm to PC     & U   & 0010111    &        &        & rd = PC + (imm \verb|<<| 12) & \\ \hline
 ecall    & Environment Call        & I   & 1110011    & 0x0    & 0x00   & Transfer control to OS       & imm: 0x000 \\ \hline

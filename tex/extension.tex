@@ -1,5 +1,47 @@
 \section*{Standard Extensions}
 
+\subsection*{Extension Instruction Formats}
+\small
+\begin{center}
+\begin{tabular}
+{p{0in}p{0.4in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.4in}p{0.6in}p{0.4in}p{0.6in}p{0.7in}l}
+&
+\multicolumn{1}{l}{\instbit{31}} &
+\multicolumn{1}{r}{\instbit{27}} &
+\instbit{26} &
+\instbit{25} &
+\multicolumn{1}{l}{\instbit{24}} &
+\multicolumn{1}{r}{\instbit{20}} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\cline{2-11}
+
+&
+\multicolumn{2}{|c|}{funct5} &
+\multicolumn{1}{|c|}{aq} &
+\multicolumn{1}{|c|}{rl} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & R(atom)-type \\
+\cline{2-11}
+
+&
+\multicolumn{2}{|c|}{rs3} &
+\multicolumn{2}{|c|}{funct2} &
+\multicolumn{2}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & R4-type \\
+\cline{2-11}
+
+\end{tabular}
+\end{center}
+
 \subsection*{RV32M Multiply Extension}
 \begin{center}
 \begin{tabular}

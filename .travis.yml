@@ -3,13 +3,3 @@ before_install:
 script:
 - mkdir _build
 - pdflatex -file-line-error -halt-on-error -output-directory _build riscv-card.tex
-# deploy:
-#  provider: releases
-#   api_key:
-#     secure: [YOUR KEY]
-#   file:
-#   - _build/your_file_1.pdf
-#   - _build/your_file_2.pdf
-#   skip_cleanup: true
-#   on:
-#     tags: true

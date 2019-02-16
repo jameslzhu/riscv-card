@@ -1,0 +1,5 @@
+before_install:
+- "sudo apt-get update && sudo apt-get install --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra texlive-latex-recommended dvipng"
+script:
+- mkdir _build
+- pdflatex -file-line-error -halt-on-error -output-directory _build riscv-card.tex

@@ -72,14 +72,14 @@
 \begin{tabular}
 {T | l | c | T | T | T | T | l} \hline
 \rm Inst & Name                    & FMT & \rm Opcode & \rm F3 & \rm F7 & \rm Description (C)          & Note \\ \hline
-add      & ADD                     & R   & 0000011    & 0x0    & 0x00   & rd = rs1 + rs2               & \\
-sub      & SUB                     & R   & 0000011    & 0x0    & 0x20   & rd = rs1 - rs2               & \\
-xor      & XOR                     & R   & 0000011    & 0x4    & 0x00   & rd = rs1 \^{} rs2            & \\
-or       & OR                      & R   & 0000011    & 0x6    & 0x00   & rd = rs1 | rs2               & \\
-and      & AND                     & R   & 0000011    & 0x7    & 0x00   & rd = rs1 \& rs2              & \\
-sll      & Shift Left Logical      & R   & 0000011    & 0x1    & 0x00   & rd = rs1 \verb|<<| rs2       & \\
-srl      & Shift Right Logical     & R   & 0000011    & 0x2    & 0x00   & rd = rs1 \verb|>>| rs2       & \\
-sra      & Shift Right Arith*      & R   & 0000011    & 0x3    & 0x20   & rd = rs1 \verb|>>| rs2       & msb-extends \\
+add      & ADD                     & R   & 0110011    & 0x0    & 0x00   & rd = rs1 + rs2               & \\
+sub      & SUB                     & R   & 0110011    & 0x0    & 0x20   & rd = rs1 - rs2               & \\
+xor      & XOR                     & R   & 0110011    & 0x4    & 0x00   & rd = rs1 \^{} rs2            & \\
+or       & OR                      & R   & 0110011    & 0x6    & 0x00   & rd = rs1 | rs2               & \\
+and      & AND                     & R   & 0110011    & 0x7    & 0x00   & rd = rs1 \& rs2              & \\
+sll      & Shift Left Logical      & R   & 0110011    & 0x1    & 0x00   & rd = rs1 \verb|<<| rs2       & \\
+srl      & Shift Right Logical     & R   & 0110011    & 0x2    & 0x00   & rd = rs1 \verb|>>| rs2       & \\
+sra      & Shift Right Arith*      & R   & 0110011    & 0x3    & 0x20   & rd = rs1 \verb|>>| rs2       & msb-extends \\
 slt      & Set Less Than           & R   & 0110011    & 0x2    &        & rd = (rs1 < rs2)?1:0         & \\
 sltu     & Set Less Than (U)       & R   & 0110011    & 0x3    &        & rd = (rs1 < rs2)?1:0         & zero-extends \\ \hline
 addi     & ADD Immediate           & I   & 0010011    & 0x0    & 0x00   & rd = rs1 + imm               & \\

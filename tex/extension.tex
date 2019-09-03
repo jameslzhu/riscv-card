@@ -4,7 +4,7 @@
 \begin{center}
 \begin{tabular}
 {T | l | c | T | T | T | C } \hline
-\rm Inst & Name              & FMT & \rm Opcode & \rm F3 & \rm F7 & \rm Description (C)     \\ \hline
+\rm Inst & Name              & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)     \\ \hline
 mul      & MUL               & R   & 0110011    & 0x0    & 0x01   & rd = (rs1 * rs2)[31:0]  \\
 mulh     & MUL High          & R   & 0110011    & 0x1    & 0x01   & rd = (rs1 * rs2)[63:32] \\
 mulsu    & MUL High (S) (U)  & R   & 0110011    & 0x2    & 0x01   & rd = (rs1 * rs2)[63:32] \\
@@ -49,7 +49,7 @@ remu     & Remainder (U)     & R   & 0110011    & 0x7    & 0x01   & rd = rs1 \% 
 
 \begin{tabular}
 {T | l | c | T | T | T | T } \hline
-\rm Inst  & Name              & FMT   & \rm Opcode & \rm F3 & \rm F5 & \rm Description (C)         \\ \hline
+\rm Inst  & Name              & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C)         \\ \hline
 lr.w      & Load Reserved     & R     & 0101111    & 0x2    & 0x02   & rd = M[rs1], reserve M[rs1] \\
 sc.w      & Store Conditional & R     & 0101111    & 0x2    & 0x03   & \parbox[t]{2.5in}{ if (reserved) \{ M[rs1] = rs2; rd = 0 \} \\
                                                                         else \{ rd = 1 \}}   \\
@@ -69,7 +69,7 @@ amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & rd = min(
 \begin{center}
 \begin{tabular}
 {T | l | c | T | T | T | T } \hline
-\rm Inst  & Name                  & FMT   & \rm Opcode & \rm F3 & \rm F5 & \rm Description (C)         \\ \hline
+\rm Inst  & Name                  & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C)         \\ \hline
 flw       & Flt Load Word         & *     &            &        &        & rd = M[rs1 + imm]    \\
 fsw       & Flt Store Word        & *     &            &        &        & M[rs1 + imm] = rs2   \\
 fmadd.s   & Flt Fused Mul-Add     & *     &            &        &        & rd = rs1 * rs2 + rs3 \\

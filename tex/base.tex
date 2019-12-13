@@ -80,15 +80,15 @@ and      & AND                     & R   & 0110011    & 0x7    & 0x00   & rd = r
 sll      & Shift Left Logical      & R   & 0110011    & 0x1    & 0x00   & rd = rs1 \verb|<<| rs2       & \\
 srl      & Shift Right Logical     & R   & 0110011    & 0x5    & 0x00   & rd = rs1 \verb|>>| rs2       & \\
 sra      & Shift Right Arith*      & R   & 0110011    & 0x5    & 0x20   & rd = rs1 \verb|>>| rs2       & msb-extends \\
-slt      & Set Less Than           & R   & 0110011    & 0x2    &        & rd = (rs1 < rs2)?1:0         & \\
-sltu     & Set Less Than (U)       & R   & 0110011    & 0x3    &        & rd = (rs1 < rs2)?1:0         & zero-extends \\ \hline
-addi     & ADD Immediate           & I   & 0010011    & 0x0    & 0x00   & rd = rs1 + imm               & \\
-xori     & XOR Immediate           & I   & 0010011    & 0x4    & 0x00   & rd = rs1 \^{} imm            & \\
-ori      & OR Immediate            & I   & 0010011    & 0x6    & 0x00   & rd = rs1 | imm               & \\
-andi     & AND Immediate           & I   & 0010011    & 0x7    & 0x00   & rd = rs1 \& imm              & \\
-slli     & Shift Left Logical Imm  & I   & 0010011    & 0x1    & 0x00   & rd = rs1 \verb|<<| imm       & \\
-srli     & Shift Right Logical Imm & I   & 0010011    & 0x5    & 0x00   & rd = rs1 \verb|>>| imm       & \\
-srai     & Shift Right Arith Imm   & I   & 0010011    & 0x5    & 0x20   & rd = rs1 \verb|>>| imm       & msb-extends \\
+slt      & Set Less Than           & R   & 0110011    & 0x2    & 0x00   & rd = (rs1 < rs2)?1:0         & \\
+sltu     & Set Less Than (U)       & R   & 0110011    & 0x3    & 0x00   & rd = (rs1 < rs2)?1:0         & zero-extends \\ \hline
+addi     & ADD Immediate           & I   & 0010011    & 0x0    &        & rd = rs1 + imm               & \\
+xori     & XOR Immediate           & I   & 0010011    & 0x4    &        & rd = rs1 \^{} imm            & \\
+ori      & OR Immediate            & I   & 0010011    & 0x6    &        & rd = rs1 | imm               & \\
+andi     & AND Immediate           & I   & 0010011    & 0x7    &        & rd = rs1 \& imm              & \\
+slli     & Shift Left Logical Imm  & I   & 0010011    & 0x1    & imm[5:11]=0x00 & rd = rs1 \verb|<<| imm[0:4]  & \\
+srli     & Shift Right Logical Imm & I   & 0010011    & 0x5    & imm[5:11]=0x00 & rd = rs1 \verb|>>| imm[0:4]  & \\
+srai     & Shift Right Arith Imm   & I   & 0010011    & 0x5    & imm[5:11]=0x20 & rd = rs1 \verb|>>| imm[0:4]  & msb-extends \\
 slti     & Set Less Than Imm       & I   & 0010011    & 0x2    &        & rd = (rs1 < imm)?1:0         & \\
 sltiu    & Set Less Than Imm (U)   & I   & 0010011    & 0x3    &        & rd = (rs1 < imm)?1:0         & zero-extends \\ \hline
 lb       & Load Byte               & I   & 0000011    & 0x0    &        & rd = M[rs1+imm][0:7]         & \\
@@ -109,7 +109,7 @@ jal      & Jump And Link           & J   & 1101111    &        &        & rd = P
 jalr     & Jump And Link Reg       & I   & 1100111    & 0x0    &        & rd = PC+4; PC = rs1 + imm    & \\ \hline
 lui      & Load Upper Imm          & U   & 0110111    &        &        & rd = imm \verb|<<| 12        & \\
 auipc    & Add Upper Imm to PC     & U   & 0010111    &        &        & rd = PC + (imm \verb|<<| 12) & \\ \hline
-ecall    & Environment Call        & I   & 1110011    & 0x0    & 0x00   & Transfer control to OS       & imm: 0x000 \\ \hline
-ebreak   & Environment Break       & I   & 1110011    & 0x0    & 0x00   & Transfer control to debugger & imm: 0x001 \\ \hline
+ecall    & Environment Call        & I   & 1110011    & 0x0    & imm=0x0 & Transfer control to OS       & \\ \hline
+ebreak   & Environment Break       & I   & 1110011    & 0x0    & imm=0x1 & Transfer control to debugger & \\ \hline
 
 \end{tabular}

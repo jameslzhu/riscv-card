@@ -102,7 +102,7 @@ sw       & Store Word              & S   & 0100011    & 0x2    &        & M[rs1+
 beq      & Branch ==               & B   & 1100011    & 0x0    &        & if(rs1 == rs2) PC += imm     & \\
 bne      & Branch !=               & B   & 1100011    & 0x1    &        & if(rs1 != rs2) PC += imm     & \\
 blt      & Branch <                & B   & 1100011    & 0x4    &        & if(rs1 < \enspace rs2) PC += imm & \\
-bge      & Branch $\leq$           & B   & 1100011    & 0x5    &        & if(rs1 >= rs2) PC += imm     & \\
+bge      & Branch $\geq$           & B   & 1100011    & 0x5    &        & if(rs1 >= rs2) PC += imm     & \\
 bltu     & Branch < (U)            & B   & 1100011    & 0x6    &        & if(rs1 < \enspace rs2) PC += imm & zero-extends \\
 bgeu     & Branch $\geq$ (U)       & B   & 1100011    & 0x7    &        & if(rs1 >= rs2) PC += imm     & zero-extends \\ \hline
 jal      & Jump And Link           & J   & 1101111    &        &        & rd = PC+4; PC += imm         & \\

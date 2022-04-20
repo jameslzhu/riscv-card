@@ -18,12 +18,13 @@ have been omitted.
 ## Why?
 
 In RISC tradition, the assembly reference for [MIPS][mips-green-sheet]
-and [RISC-V][riscv-card] fit onto a single double-sided page.
+and [RISC-V][riscv-card] fits onto a single double-sided 'Green Sheet'.
 
-Alas, when I took [CS 61C][cs61c] at UC Berkeley in 2017, we were the first semester taught
+When I took [CS 61C][cs61c] at UC Berkeley in 2017, we were the first semester taught
 using RISC-V, and our reference card scans from our [RISC-V textbook][patterson-hennessy]
 were low-quality. I wanted a card I didn't have to squint at, so I typeset it in LaTeX.
-The new scan (linked above) is high-quality but is still not text-friendly.
+
+The latest [Berkeley course reference card][cs61c-sp22] is also available.
 
 This little reference has grown well past a double-sided page, but if you still want
 the original you can print the first and last pages for the asm opcodes and calling convention.
@@ -60,7 +61,8 @@ under the Creative Commons [CC-BY-4.0][CC] license.
 [pdf]: https://github.com/jameslzhu/riscv-card/blob/master/riscv-card.pdf
 [RV]: https://riscv.org/specifications "RISC-V spec"
 [CC]: https://creativecommons.org/licenses/by/4.0/ "CC-BY-4.0"
-[cs61c]:https://cs61c.org/
+[cs61c]: https://cs61c.org/
 [patterson-hennessy]: https://www.elsevier.com/books/catalog/isbn/9780128203316
-[riscv-card]: https://cs61c.org/resources/pdf?file=riscvcard_large.pdf
+[riscv-card]: https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Green_Sheet.pdf
 [mips-green-sheet]: https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf
+[cs61c-sp22]: https://cs61c.org/sp22/pdfs/resources/reference-card.pdf

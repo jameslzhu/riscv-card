@@ -50,16 +50,18 @@ remu     & Remainder (U)     & R   & 0110011    & 0x7    & 0x01   & rd = rs1 \% 
 \begin{tabular}
 {T | l | c | T | T | T | T } \hline
 \rm Inst  & Name              & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C)         \\ \hline
-lr.w      & Load Reserved     & R     & 0101111    & 0x2    & 0x02   & rd = M[rs1], reserve M[rs1] \\
-sc.w      & Store Conditional & R     & 0101111    & 0x2    & 0x03   & \parbox[t]{2.5in}{ if (reserved) \{ M[rs1] = rs2; rd = 0 \} \\
-                                                                        else \{ rd = 1 \}}   \\
-amoswap.w & Atomic Swap       & R     & 0101111    & 0x2    & 0x01   & rd = M[rs1]; swap(rd, rs2); M[rs1] = rd \\
-amoadd.w  & Atomic ADD        & R     & 0101111    & 0x2    & 0x00   & rd = M[rs1] + rs2; M[rs1] = rd \\
-amoand.w  & Atomic AND        & R     & 0101111    & 0x2    & 0x0C   & rd = M[rs1] \& rs2; M[rs1] = rd \\
-amoor.w   & Atomic OR         & R     & 0101111    & 0x2    & 0x0A   & rd = M[rs1] | rs2; M[rs1] = rd \\
-amoxor.w  & Atomix XOR        & R     & 0101111    & 0x2    & 0x04   & rd = M[rs1] \^{} rs2; M[rs1] = rd \\
-amomax.w  & Atomic MAX        & R     & 0101111    & 0x2    & 0x14   & rd = max(M[rs1], rs2); M[rs1] = rd \\
-amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & rd = min(M[rs1], rs2); M[rs1] = rd \\
+lr.w      & Load Reserved     & R     & 0101111    & 0x2    & 0x02   & rd = M[rs1]; reserved=1; \\
+sc.w      & Store Conditional & R     & 0101111    & 0x2    & 0x03   & \parbox[t]{2.5in}{ if (reserved) \{ M[rs1] = rs2; rd = 0; \} \\
+                                                                        else \{ rd = 1; \}; reserved=0}  \\
+amoswap.w & Atomic Swap       & R     & 0101111    & 0x2    & 0x01   & rd = M[rs1]; M[rs1] = rs2 \\
+amoadd.w  & Atomic ADD        & R     & 0101111    & 0x2    & 0x00   & rd = M[rs1]; M[rs1] = rd + rs2\\
+amoand.w  & Atomic AND        & R     & 0101111    & 0x2    & 0x0C   & rd = M[rs1]; M[rs1] = rd \& rs2\\
+amoor.w   & Atomic OR         & R     & 0101111    & 0x2    & 0x08   & rd = M[rs1]; M[rs1] = rd | rs2 \\
+amoxor.w  & Atomix XOR        & R     & 0101111    & 0x2    & 0x04   & rd = M[rs1]; M[rs1] = rd \^{} rs2\\
+amomax.w  & Atomic MAX        & R     & 0101111    & 0x2    & 0x14   & rd = M[rs1]; M[rs1] = max(rd, rs2) \\
+amomin.w  & Atomic MIN        & R     & 0101111    & 0x2    & 0x10   & rd = M[rs1]; M[rs1] = min(rd, rs2) \\
+amomaxu.w & Atomic MAX (U)    & R     & 0101111    & 0x2    & 0x1c   & rd = M[rs1]; M[rs1] = max(rd, rs2) \\
+amominu.w & Atomic MIN (U)    & R     & 0101111    & 0x2    & 0x18   & rd = M[rs1]; M[rs1] = min(rd, rs2) \\
 \hline
 \end{tabular}
 \end{center}

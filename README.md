@@ -4,6 +4,21 @@
 
 An unofficial reference sheet for RISC-V, the free and libre ISA from Berkeley. ([**PDF**][pdf]).
 
+## Compiling 
+
+Compile the root document `riscv-card.tex` with [LaTeX][latex] from your system's
+standard TeX distribution (TeX Live / MikTeX):
+
+```sh
+pdflatex riscv-card.tex
+```
+
+Or with [tectonic][tectonic]:
+```
+tectonic riscv-card.tex
+```
+
+
 ## What's inside?
 
 - The base ISA (RV32I), with opcode values and C-like descriptions
@@ -66,3 +81,5 @@ under the Creative Commons [CC-BY-4.0][CC] license.
 [riscv-card]: https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Green_Sheet.pdf
 [mips-green-sheet]: https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf
 [cs61c-sp22]: https://cs61c.org/sp22/pdfs/resources/reference-card.pdf
+[latex]: https://www.latex-project.org/get/
+[tectonic]: https://tectonic-typesetting.github.io/en-US/

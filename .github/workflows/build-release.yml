@@ -1,0 +1,24 @@
+name: 'release'
+on:
+  push:
+    branches: master
+jobs:
+  prerelease:
+    name: "Pre Release"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Tectonic
+        run: tectonic riscv-card.tex
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "${{ steps.get_commit.outputs.commit_id }}"
+          files: |
+            riscv-card.pdf

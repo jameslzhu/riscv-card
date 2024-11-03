@@ -1,0 +1,20 @@
+name: 'Build LaTex Document'
+on:
+  pull_request:
+    branches: master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - uses: wtfjoke/setup-tectonic@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run Tectonic
+        run: tectonic riscv-card.tex
+      - name: Upload pdf
+        uses: actions/upload-artifact@v4
+        with:
+          name: riscv-card 
+          path: riscv-card.pdf

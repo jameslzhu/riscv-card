@@ -89,8 +89,8 @@ andi     & AND Immediate           & I   & 0010011    & 0x7    &        & rd = r
 slli     & Shift Left Logical Imm  & I   & 0010011    & 0x1    & imm[5:11]=0x00 & rd = rs1 \verb|<<| imm[0:4]  & \\
 srli     & Shift Right Logical Imm & I   & 0010011    & 0x5    & imm[5:11]=0x00 & rd = rs1 \verb|>>| imm[0:4]  & \\
 srai     & Shift Right Arith Imm   & I   & 0010011    & 0x5    & imm[5:11]=0x20 & rd = rs1 \verb|>>| imm[0:4]  & msb-extends \\
-slti     & Set Less Than Imm       & I   & 0010011    & 0x2    &        & rd = (rs1 < imm)?1:0         & \\
-sltiu    & Set Less Than Imm (U)   & I   & 0010011    & 0x3    &        & rd = (rs1 < imm)?1:0         & zero-extends \\ \hline
+slti     & Set Less Than Imm       & I   & 0010011    & 0x2    &        & rd = (rs1 < imm)?1:0         & signed cmp \\
+sltiu    & Set Less Than Imm (U)   & I   & 0010011    & 0x3    &        & rd = (rs1 < imm)?1:0         & unsigned cmp \\ \hline
 lb       & Load Byte               & I   & 0000011    & 0x0    &        & rd = M[rs1+imm][0:7]         & \\
 lh       & Load Half               & I   & 0000011    & 0x1    &        & rd = M[rs1+imm][0:15]        & \\
 lw       & Load Word               & I   & 0000011    & 0x2    &        & rd = M[rs1+imm][0:31]        & \\

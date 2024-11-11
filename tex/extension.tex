@@ -7,8 +7,8 @@
 \rm Inst & Name              & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)     \\ \hline
 mul      & MUL               & R   & 0110011    & 0x0    & 0x01   & rd = (rs1 * rs2)[31:0]  \\
 mulh     & MUL High          & R   & 0110011    & 0x1    & 0x01   & rd = (rs1 * rs2)[63:32] \\
-mulsu    & MUL High (S) (U)  & R   & 0110011    & 0x2    & 0x01   & rd = (rs1 * rs2)[63:32] \\
-mulu     & MUL High (U)      & R   & 0110011    & 0x3    & 0x01   & rd = (rs1 * rs2)[63:32] \\
+mulhsu   & MUL High (S) (U)  & R   & 0110011    & 0x2    & 0x01   & rd = (rs1 * rs2)[63:32] \\
+mulhu    & MUL High (U)      & R   & 0110011    & 0x3    & 0x01   & rd = (rs1 * rs2)[63:32] \\
 div      & DIV               & R   & 0110011    & 0x4    & 0x01   & rd = rs1 / rs2          \\
 divu     & DIV (U)           & R   & 0110011    & 0x5    & 0x01   & rd = rs1 / rs2          \\
 rem      & Remainder         & R   & 0110011    & 0x6    & 0x01   & rd = rs1 \% rs2         \\

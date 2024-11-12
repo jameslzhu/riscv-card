@@ -2,6 +2,23 @@
 
 \subsection*{RV32M Multiply Extension}
 \begin{center}
+\begin{tabular}{S@{}R@{}R@{}S@{}R@{}O}
+\instbitrange{31}{25} &
+\instbitrange{24}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{funct7} &
+\multicolumn{1}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+7 & 5 & 5 & 3 & 5 & 7 \\
+\end{tabular}
 \begin{tabular}
 {T | l | c | T | T | T | C } \hline
 \rm Inst & Name              & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)     \\ \hline
@@ -66,28 +83,106 @@ amominu.w & Atomic MIN (U)    & R     & 0101111    & 0x2    & 0x18   & rd = M[rs
 \end{tabular}
 \end{center}
 
+\pagebreak
+
 \subsection*{RV32F / D Floating-Point Extensions}
 
 \begin{center}
+\begin{tabular}{M@{}R@{}F@{}R@{}O}
+\\
+\instbitrange{31}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{imm[11:0]} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{width} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+offset[11:0] & base & W & dest & LOAD-FP \\
+\end{tabular}
+\begin{tabular}{O@{}R@{}R@{}F@{}R@{}O}
+\\
+\instbitrange{31}{25} &
+\instbitrange{24}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{imm[11:5]} &
+\multicolumn{1}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{width} &
+\multicolumn{1}{c|}{imm[4:0]} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+offset[11:5] & src & base & W & offset[4:0] & STORE-FP \\
+\end{tabular}
+
+\begin{tabular}{R@{}F@{}R@{}R@{}F@{}R@{}O}
+\\
+\instbitrange{31}{27} &
+\instbitrange{26}{25} &
+\instbitrange{24}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{funct5} &
+\multicolumn{1}{c|}{fmt} &
+\multicolumn{1}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{rm} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+FADD/FSUB & S & src2 & src1 & RM  & dest & OP-FP  \\
+\end{tabular}
+\begin{tabular}{R@{}F@{}R@{}R@{}F@{}R@{}O}
+\\
+\instbitrange{31}{27} &
+\instbitrange{26}{25} &
+\instbitrange{24}{20} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\hline
+\multicolumn{1}{|c|}{rs3} &
+\multicolumn{1}{c|}{fmt} &
+\multicolumn{1}{c|}{rs2} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{rm} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} \\
+\hline
+src3 & S & src2 & src1 & RM  & dest & F[N]MADD/F[N]MSUB  \\
+\end{tabular}
+
 \begin{tabular}
 {T | l | c | T | T | T | T } \hline
 \rm Inst  & Name                  & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C)         \\ \hline
-flw       & Flt Load Word         & *     &            &        &        & rd = M[rs1 + imm]    \\
-fsw       & Flt Store Word        & *     &            &        &        & M[rs1 + imm] = rs2   \\
-fmadd.s   & Flt Fused Mul-Add     & *     &            &        &        & rd = rs1 * rs2 + rs3 \\
-fmsub.s   & Flt Fused Mul-Sub     & *     &            &        &        & rd = rs1 * rs2 - rs3 \\
-fnmadd.s  & Flt Neg Fused Mul-Add & *     &            &        &        & rd = -rs1 * rs2 + rs3 \\
-fnmsub.s  & Flt Neg Fused Mul-Sub & *     &            &        &        & rd = -rs1 * rs2 - rs3 \\
-fadd.s    & Flt Add               & *     &            &        &        & rd = rs1 + rs2       \\
-fsub.s    & Flt Sub               & *     &            &        &        & rd = rs1 - rs2       \\
-fmul.s    & Flt Mul               & *     &            &        &        & rd = rs1 * rs2       \\
-fdiv.s    & Flt Div               & *     &            &        &        & rd = rs1 / rs2       \\
-fsqrt.s   & Flt Square Root       & *     &            &        &        & rd = sqrt(rs1)       \\
+flw       & Flt Load Word         & I     &            &        &        & rd = M[rs1 + imm]    \\
+fsw       & Flt Store Word        & S     &            &        &        & M[rs1 + imm] = rs2   \\
+fmadd.s   & Flt Fused Mul-Add     & R     &            &        &        & rd = rs1 * rs2 + rs3 \\
+fmsub.s   & Flt Fused Mul-Sub     & R     &            &        &        & rd = rs1 * rs2 - rs3 \\
+fnmadd.s  & Flt Neg Fused Mul-Add & R     &            &        &        & rd = -rs1 * rs2 + rs3 \\
+fnmsub.s  & Flt Neg Fused Mul-Sub & R     &            &        &        & rd = -rs1 * rs2 - rs3 \\
+fadd.s    & Flt Add               & R     &            &        &        & rd = rs1 + rs2       \\
+fsub.s    & Flt Sub               & R     &            &        &        & rd = rs1 - rs2       \\
+fmul.s    & Flt Mul               & R     &            &        &        & rd = rs1 * rs2       \\
+fdiv.s    & Flt Div               & R     &            &        &        & rd = rs1 / rs2       \\
+fsqrt.s   & Flt Square Root       & R     &            &        &        & rd = sqrt(rs1)       \\
 fsgnj.s   & Flt Sign Injection    & *     &            &        &        & rd = abs(rs1) * sgn(rs2) \\
 fsgnjn.s  & Flt Sign Neg Injection& *     &            &        &        & rd = abs(rs1) * -sgn(rs2) \\
 fsgnjx.s  & Flt Sign Xor Injection& *     &            &        &        & rd = rs1 * sgn(rs2)  \\
-fmin.s    & Flt Minimum           & *     &            &        &        & rd = min(rs1, rs2)   \\
-fmax.s    & Flt Maximum           & *     &            &        &        & rd = max(rs1, rs2)   \\
+fmin.s    & Flt Minimum           & R     &            &        &        & rd = min(rs1, rs2)   \\
+fmax.s    & Flt Maximum           & R     &            &        &        & rd = max(rs1, rs2)   \\
 fcvt.s.w  & Flt Conv from Sign Int& *     &            &        &        & rd = (float) rs1 \\
 fcvt.s.wu & Flt Conv from Uns Int & *     &            &        &        & rd = (float) rs1 \\
 fcvt.w.s  & Flt Convert to Int    & *     &            &        &        & rd = (int32\_t) rs1 \\
@@ -101,6 +196,8 @@ fclass.s  & Float Classify        & *     &            &        &        & rd = 
 \hline
 \end{tabular}
 \end{center}
+
+\pagebreak
 
 \subsection*{RV32C Compressed Extension}
 

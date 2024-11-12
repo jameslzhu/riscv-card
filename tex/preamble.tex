@@ -8,12 +8,13 @@
 \usepackage{graphics}
 \usepackage{multirow}
 \usepackage{fancyhdr}
+\usepackage{hyperref}
 
 \graphicspath{img}
 
 % New column types to use in tabular environment for instruction formats.
 % Allocate 0.18in per bit.
-% \newcolumntype{I}{>{\centering\arraybackslash}p{0.18in}}
+\newcolumntype{I}{>{\centering\arraybackslash}p{0.18in}}
 % Two-bit centered column.
 \newcolumntype{W}{>{\centering\arraybackslash}p{0.36in}}
 % Three-bit centered column.
@@ -23,7 +24,7 @@
 % Five-bit centered column.
 \newcolumntype{R}{>{\centering\arraybackslash}p{0.9in}}
 % Six-bit centered column.
-% \newcolumntype{S}{>{\centering\arraybackslash}p{1.08in}}
+\newcolumntype{S}{>{\centering\arraybackslash}p{1.08in}}
 % Seven-bit centered column.
 \newcolumntype{O}{>{\centering\arraybackslash}p{1.26in}}
 % Eight-bit centered column.
@@ -31,7 +32,7 @@
 % Ten-bit centered column.
 % \newcolumntype{T}{>{\centering\arraybackslash}p{1.8in}}
 % Twelve-bit centered column.
-% \newcolumntype{M}{>{\centering\arraybackslash}p{2.2in}}
+\newcolumntype{M}{>{\centering\arraybackslash}p{2.2in}}
 % Sixteen-bit centered column.
 % \newcolumntype{K}{>{\centering\arraybackslash}p{2.88in}}
 % Twenty-bit centered column.
@@ -43,9 +44,9 @@
 
 \renewcommand{\familydefault}{bch}
 
-% Typewriter font 
+% Typewriter font
 \newcolumntype{T}{>{\texttt\bgroup}l<{\egroup}}
-% Typewriter font (code) 
+% Typewriter font (code)
 \newcolumntype{C}{>{\texttt\bgroup}p{2.5in}<{\egroup}}
 
 \newcommand{\instbit}[1]{\mbox{\scriptsize #1}}

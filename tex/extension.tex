@@ -141,7 +141,7 @@ offset[11:5] & src & base & W & offset[4:0] & STORE-FP \\
 \multicolumn{1}{c|}{rd} &
 \multicolumn{1}{c|}{opcode} \\
 \hline
-FADD/FSUB & S & src2 & src1 & RM  & dest & OP-FP  \\
+FADD/FSUB & S & src2 & src1 & RM  & dest & OP-FP (R)
 \end{tabular}
 \begin{tabular}{R@{}F@{}R@{}R@{}F@{}R@{}O}
 \\
@@ -161,38 +161,38 @@ FADD/FSUB & S & src2 & src1 & RM  & dest & OP-FP  \\
 \multicolumn{1}{c|}{rd} &
 \multicolumn{1}{c|}{opcode} \\
 \hline
-src3 & S & src2 & src1 & RM  & dest & F[N]MADD/F[N]MSUB  \\
+src3 & S & src2 & src1 & RM  & dest & F[N]MADD/F[N]MSUB
 \end{tabular}
 
 \begin{tabular}
-{T | l | c | T | T | T | T } \hline
-\rm Inst  & Name                  & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C)         \\ \hline
-flw       & Flt Load Word         & I     &            &        &        & rd = M[rs1 + imm]    \\
-fsw       & Flt Store Word        & S     &            &        &        & M[rs1 + imm] = rs2   \\
-fmadd.s   & Flt Fused Mul-Add     & R     &            &        &        & rd = rs1 * rs2 + rs3 \\
-fmsub.s   & Flt Fused Mul-Sub     & R     &            &        &        & rd = rs1 * rs2 - rs3 \\
-fnmadd.s  & Flt Neg Fused Mul-Add & R     &            &        &        & rd = -rs1 * rs2 + rs3 \\
-fnmsub.s  & Flt Neg Fused Mul-Sub & R     &            &        &        & rd = -rs1 * rs2 - rs3 \\
-fadd.s    & Flt Add               & R     &            &        &        & rd = rs1 + rs2       \\
-fsub.s    & Flt Sub               & R     &            &        &        & rd = rs1 - rs2       \\
-fmul.s    & Flt Mul               & R     &            &        &        & rd = rs1 * rs2       \\
-fdiv.s    & Flt Div               & R     &            &        &        & rd = rs1 / rs2       \\
-fsqrt.s   & Flt Square Root       & R     &            &        &        & rd = sqrt(rs1)       \\
-fsgnj.s   & Flt Sign Injection    & *     &            &        &        & rd = abs(rs1) * sgn(rs2) \\
-fsgnjn.s  & Flt Sign Neg Injection& *     &            &        &        & rd = abs(rs1) * -sgn(rs2) \\
-fsgnjx.s  & Flt Sign Xor Injection& *     &            &        &        & rd = rs1 * sgn(rs2)  \\
-fmin.s    & Flt Minimum           & R     &            &        &        & rd = min(rs1, rs2)   \\
-fmax.s    & Flt Maximum           & R     &            &        &        & rd = max(rs1, rs2)   \\
-fcvt.s.w  & Flt Conv from Sign Int& *     &            &        &        & rd = (float) rs1 \\
-fcvt.s.wu & Flt Conv from Uns Int & *     &            &        &        & rd = (float) rs1 \\
-fcvt.w.s  & Flt Convert to Int    & *     &            &        &        & rd = (int32\_t) rs1 \\
-fcvt.wu.s & Flt Convert to Int    & *     &            &        &        & rd = (uint32\_t) rs1 \\
-fmv.x.w   & Move Float to Int     & *     &            &        &        & rd = *((int*) \&rs1) \\
-fmv.w.x   & Move Int to Float     & *     &            &        &        & rd = *((float*) \&rs1) \\
-feq.s     & Float Equality        & *     &            &        &        & rd = (rs1 == rs2) ? 1 : 0 \\
-flt.s     & Float Less Than       & *     &            &        &        & rd = (rs1 <  rs2) ? 1 : 0 \\
-fle.s     & Float Less / Equal    & *     &            &        &        & rd = (rs1 <= rs2) ? 1 : 0\\
-fclass.s  & Float Classify        & *     &            &        &        & rd = 0..9 \\
+{T | l | c | T | T | T | T | l } \hline
+\rm Inst  & Name                    & FMT   & \rm Opcode & \rm funct3 & \rm funct5 & \rm Description (C) & \rm Note \\ \hline
+flw       & Flt Load Word           & I     &            &        &        & rd = M[rs1 + imm]    \\
+fsw       & Flt Store Word          & S     &            &        &        & M[rs1 + imm] = rs2   \\
+fmadd.s   & Flt Fused Mul-Add       & R     &            &        &        & rd = rs1 * rs2 + rs3 \\
+fmsub.s   & Flt Fused Mul-Sub       & R     &            &        &        & rd = rs1 * rs2 - rs3 \\
+fnmadd.s  & Flt Neg [Fused Mul-Add] & R     &            &        &        & rd = -(rs1 * rs2) - rs3 & [sic] \\
+fnmsub.s  & Flt Neg [Fused Mul-Sub] & R     &            &        &        & rd = -(rs1 * rs2) + rs3 & [sic] \\
+fadd.s    & Flt Add                 & R     &            &        &        & rd = rs1 + rs2       \\
+fsub.s    & Flt Sub                 & R     &            &        &        & rd = rs1 - rs2       \\
+fmul.s    & Flt Mul                 & R     &            &        &        & rd = rs1 * rs2       \\
+fdiv.s    & Flt Div                 & R     &            &        &        & rd = rs1 / rs2       \\
+fsqrt.s   & Flt Square Root         & R     &            &        &        & rd = sqrt(rs1)       \\
+fsgnj.s   & Flt Sign Injection      & *     &            &        &        & rd = abs(rs1) * sgn(rs2) \\
+fsgnjn.s  & Flt Sign Neg Injection  & *     &            &        &        & rd = abs(rs1) * -sgn(rs2) \\
+fsgnjx.s  & Flt Sign Xor Injection  & *     &            &        &        & rd = rs1 * sgn(rs2)  \\
+fmin.s    & Flt Minimum             & R     &            &        &        & rd = min(rs1, rs2)   \\
+fmax.s    & Flt Maximum             & R     &            &        &        & rd = max(rs1, rs2)   \\
+fcvt.s.w  & Flt Conv from Sign Int  & *     &            &        &        & rd = (float) rs1 \\
+fcvt.s.wu & Flt Conv from Uns Int   & *     &            &        &        & rd = (float) rs1 \\
+fcvt.w.s  & Flt Convert to Int      & *     &            &        &        & rd = (int32\_t) rs1 \\
+fcvt.wu.s & Flt Convert to Int      & *     &            &        &        & rd = (uint32\_t) rs1 \\
+fmv.x.w   & Move Float to Int       & *     &            &        &        & rd = *((int*) \&rs1) \\
+fmv.w.x   & Move Int to Float       & *     &            &        &        & rd = *((float*) \&rs1) \\
+feq.s     & Float Equality          & *     &            &        &        & rd = (rs1 == rs2) ? 1 : 0 \\
+flt.s     & Float Less Than         & *     &            &        &        & rd = (rs1 <  rs2) ? 1 : 0 \\
+fle.s     & Float Less / Equal      & *     &            &        &        & rd = (rs1 <= rs2) ? 1 : 0\\
+fclass.s  & Float Classify          & *     &            &        &        & rd = 0..9 \\
 \hline
 \end{tabular}
 \end{center}

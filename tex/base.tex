@@ -65,13 +65,40 @@
 \multicolumn{1}{c|}{opcode} & J-type \\
 \cline{2-11}
 \end{tabular}
+
+
+\begin{tabular}
+{p{0in}p{0.4in}p{0.05in}p{0.05in}p{0.05in}p{0.05in}p{0.4in}p{0.6in}p{0.4in}p{0.6in}p{0.7in}l}
+&
+\multicolumn{1}{l}{\instbit{31}} &
+\multicolumn{1}{r}{\instbit{28}} &
+\multicolumn{1}{l}{\instbit{27}} &
+\multicolumn{1}{r}{\instbit{24}} &
+\multicolumn{1}{l}{\instbit{23}} &
+\multicolumn{1}{r}{\instbit{20}} &
+\instbitrange{19}{15} &
+\instbitrange{14}{12} &
+\instbitrange{11}{7} &
+\instbitrange{6}{0} \\
+\cline{2-11}
+\cline{2-11}
+&
+\multicolumn{2}{|c|}{fm} &
+\multicolumn{2}{c|}{pred} &
+\multicolumn{2}{c|}{succ} &
+\multicolumn{1}{c|}{rs1} &
+\multicolumn{1}{c|}{funct3} &
+\multicolumn{1}{c|}{rd} &
+\multicolumn{1}{c|}{opcode} & FENCE \\
+\cline{2-11}
+\end{tabular}
 \end{center}
 
 \subsection*{RV32I Base Integer Instructions}
 
 \begin{tabular}
 {T | l | c | T | T | T | T | l} \hline
-\rm Inst & Name                    & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)          & Note \\ \hline
+\rm Inst & Name                    & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)  & Note \\ \hline
 add      & ADD                     & R   & 0110011    & 0x0    & 0x00   & rd = rs1 + rs2               & \\
 sub      & SUB                     & R   & 0110011    & 0x0    & 0x20   & rd = rs1 - rs2               & \\
 xor      & XOR                     & R   & 0110011    & 0x4    & 0x00   & rd = rs1 \^{} rs2            & \\
@@ -109,7 +136,8 @@ jal      & Jump And Link           & J   & 1101111    &        &        & rd = P
 jalr     & Jump And Link Reg       & I   & 1100111    & 0x0    &        & rd = PC+4; PC = rs1 + imm    & \\ \hline
 lui      & Load Upper Imm          & U   & 0110111    &        &        & rd = imm \verb|<<| 12        & \\
 auipc    & Add Upper Imm to PC     & U   & 0010111    &        &        & rd = PC + (imm \verb|<<| 12) & \\ \hline
-ecall    & Environment Call        & I   & 1110011    & 0x0    & imm=0x0 & Transfer control to OS       & \\ \hline
-ebreak   & Environment Break       & I   & 1110011    & 0x0    & imm=0x1 & Transfer control to debugger & \\ \hline
+ecall    & Environment Call        & I   & 1110011    & 0x0    & imm=0x0 & Context switch to OS       & \\ \hline
+ebreak   & Environment Break       & I   & 1110011    & 0x0    & imm=0x1 & Context switch to debugger & \\ \hline
+fence    & Memory fence            & FENCE & 0001111  & 0x0    &        & Order mem/io accesses        & \\ \hline
 
 \end{tabular}

@@ -1,8 +1,8 @@
 # RISC-V Reference Card
 
-An unofficial reference sheet for RISC-V, the free and libre ISA from Berkeley. ([**PDF**][pdf]).
+An unofficial reference sheet for RISC-V, the free and libre instruction set from Berkeley. ([**PDF**][pdf]).
 
-## Compiling 
+## Compiling
 
 Compile the root document `riscv-card.tex` with [LaTeX][latex] from your system's
 standard TeX distribution (TeX Live / MikTeX):
@@ -12,21 +12,21 @@ pdflatex riscv-card.tex
 ```
 
 Or with [tectonic][tectonic]:
-```
+
+```sh
 tectonic riscv-card.tex
 ```
 
-
 ## What's inside?
 
-- The base ISA (RV32I), with opcode values and C-like descriptions
-- Standard ISA extensions (most but not all yet)
+- The base 32-bit ISA (RV32I), with opcode values and C-like descriptions
+- Standard ISA extensions (currently only targeting the RVI20 standard profile)
 - Register aliases and calling conventions
 - Pseudoinstructions
 
-Other information from the more official reference cards not specific to the ISA,
-like the stack/heap memory layout, IEEE 754 floating-point layout, and size prefixes,
-have been omitted.
+Other information from the more official reference cards not specific to the
+ISA, like the stack/heap memory layout, IEEE 754 floating-point layout, and size
+prefixes, have been omitted.
 
 ## Why?
 
@@ -36,8 +36,6 @@ and [RISC-V][riscv-card] fits onto a single double-sided 'Green Sheet'.
 When I took [CS 61C][cs61c] at UC Berkeley in 2017, we were the first semester taught
 using RISC-V, and our reference card scans from our [RISC-V textbook][patterson-hennessy]
 were low-quality. I wanted a card I didn't have to squint at, so I typeset it in LaTeX.
-
-The latest [Berkeley course reference card][cs61c-sp22] is also available.
 
 This little reference has grown well past a double-sided page, but if you still want
 the original you can print the first and last pages for the asm opcodes and calling convention.
@@ -53,11 +51,10 @@ page breaks and full letter page width usage.
 (A4 support may be a good thing to check.)
 
 Some ideas if you are truly motivated:
-- Multiple outputs (pdfs) for different domains / ISA extension sets, or for 32
-  / 64-bit support
+
+- RISCV64 64-bit ISA support
 - Directly parsing the spec, banishing typos forever
 - Build system to select binary or hex instruction opcodes
-- Other ISA support? (probably only feasible for RISC ISAs)
 
 ## Licensing
 
@@ -78,6 +75,5 @@ under the Creative Commons [CC-BY-4.0][CC] license.
 [patterson-hennessy]: https://www.elsevier.com/books/catalog/isbn/9780128203316
 [riscv-card]: https://inst.eecs.berkeley.edu/~cs61c/resources/RISCV_Green_Sheet.pdf
 [mips-green-sheet]: https://inst.eecs.berkeley.edu/~cs61c/resources/MIPS_Green_Sheet.pdf
-[cs61c-sp22]: https://cs61c.org/sp22/pdfs/resources/reference-card.pdf
 [latex]: https://www.latex-project.org/get/
 [tectonic]: https://tectonic-typesetting.github.io/en-US/

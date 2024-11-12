@@ -1,7 +1,6 @@
 \usepackage[margin=0.75in]{geometry}
 % \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{fetamont}
 \usepackage{inconsolata}
 \usepackage{array}
 \usepackage{titling}
@@ -56,19 +55,20 @@
 
 \newcommand{\headerfont}{\fontfamily{lmr}\selectfont}
 \pagestyle{fancy}
-\headheight=24pt
-\footskip=24pt
+\headheight=16pt
+\footskip=16pt
+\headsep=20pt
 \lhead{\headerfont RISC-V Reference Card}
-\rhead{\headerfont V0.1}
-\rfoot{(c) James Zhu, 2018}
+\rhead{\headerfont V0.5}
+\rfoot{(c) James Zhu, 2018-2024 (\href{https://creativecommons.org/licenses/by/4.0/}{CC-BY-4.0})}
 
 %% Title %%
 
-\pretitle{\vspace{-0.75in}\begin{center} \huge \ffmfamily \bfseries}
+\pretitle{\vspace{-0.75in}\begin{center} \huge \bfseries}
 \title{RISC-V Reference}
 \posttitle{\end{center}}
 \preauthor{\begin{center} \sffamily}
-\author{James Zhu <jameszhu@berkeley.edu>}
+\author{James Zhu <jameszhu@protonmail.com>}
 \postauthor{\end{center}}
 \predate{}
 \date{}

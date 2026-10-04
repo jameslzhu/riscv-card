@@ -141,3 +141,6 @@ ebreak   & Environment Break       & I   & 1110011    & 0x0    & imm=0x1 & Conte
 fence    & Memory fence            & FENCE & 0001111  & 0x0    &        & Order mem/io accesses        & \\ \hline
 
 \end{tabular}
+
+\smallskip
+\noindent All immediates are sign-extended, even for logical (\texttt{andi}, \texttt{ori}, \texttt{xori}) and unsigned (\texttt{sltiu}, \texttt{bltu}, \texttt{bgeu}) instructions. Shift-immediate instructions use only imm[0:4], as an unsigned shift amount.

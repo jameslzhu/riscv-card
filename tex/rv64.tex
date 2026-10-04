@@ -1,0 +1,24 @@
+\subsection*{RV64I Base Integer Instructions}
+
+\noindent RV64I widens the registers to 64 bits, and the RV32I instructions operate on all 64 bits. \texttt{lw}, \texttt{lui}, and the \texttt{*w} instructions below produce a 32-bit value that is sign-extended to 64 bits. RV64I adds or changes these instructions:
+
+\smallskip
+\begin{tabular}
+{T | l | c | T | T | T | T | l} \hline
+\rm Inst & Name                    & FMT & \rm Opcode & \rm funct3 & \rm funct7 & \rm Description (C)  & Note \\ \hline
+lwu      & Load Word (U)           & I   & 0000011    & 0x6    &        & rd = M[rs1+imm][0:31]        & zero-ext \\
+ld       & Load Doubleword         & I   & 0000011    & 0x3    &        & rd = M[rs1+imm][0:63]        & \\
+sd       & Store Doubleword        & S   & 0100011    & 0x3    &        & M[rs1+imm][0:63] = rs2[0:63] & \\ \hline
+slli     & Shift Left Logical Imm  & I   & 0010011    & 0x1    & imm[11:6]=0x00 & rd = rs1 \verb|<<| imm[0:5]  & \\
+srli     & Shift Right Logical Imm & I   & 0010011    & 0x5    & imm[11:6]=0x00 & rd = rs1 \verb|>>| imm[0:5]  & zero-ext \\
+srai     & Shift Right Arith Imm   & I   & 0010011    & 0x5    & imm[11:6]=0x10 & rd = rs1 \verb|>>| imm[0:5]  & msb-ext \\ \hline
+addiw    & ADD Word (Immediate)    & I   & 0011011    & 0x0    &        & rd = (rs1 + imm)[0:31]       & \\
+slliw    & Shift Left Logical Imm Word  & I & 0011011 & 0x1    & imm[11:5]=0x00 & rd = (rs1 \verb|<<| imm[0:4])[0:31] & \\
+srliw    & Shift Right Logical Imm Word & I & 0011011 & 0x5    & imm[11:5]=0x00 & rd = rs1[0:31] \verb|>>| imm[0:4] & zero-ext \\
+sraiw    & Shift Right Arith Imm Word   & I & 0011011 & 0x5    & imm[11:5]=0x20 & rd = rs1[0:31] \verb|>>| imm[0:4] & msb-ext \\ \hline
+addw     & ADD Word                & R   & 0111011    & 0x0    & 0x00   & rd = (rs1 + rs2)[0:31]       & \\
+subw     & SUB Word                & R   & 0111011    & 0x0    & 0x20   & rd = (rs1 - rs2)[0:31]       & \\
+sllw     & Shift Left Logical Word & R   & 0111011    & 0x1    & 0x00   & rd = (rs1 \verb|<<| rs2[0:4])[0:31] & \\
+srlw     & Shift Right Logical Word & R  & 0111011    & 0x5    & 0x00   & rd = rs1[0:31] \verb|>>| rs2[0:4] & zero-ext \\
+sraw     & Shift Right Arith Word  & R   & 0111011    & 0x5    & 0x20   & rd = rs1[0:31] \verb|>>| rs2[0:4] & msb-ext \\ \hline
+\end{tabular}
